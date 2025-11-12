@@ -5,6 +5,7 @@ import { join, dirname } from 'path';
 const __dirname = dirname(new URL(import.meta.url).pathname);
 //layouts
 const pathToBlogLayout = join(__dirname, './src/lib/layouts/blog.svelte');
+const pathToContentLayout = join(__dirname, './src/lib/layouts/content.svelte');
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
@@ -13,7 +14,8 @@ const config = {
 		vitePreprocess(),
 		mdsvex({
 			layout: {
-				blog: pathToBlogLayout
+				blog: pathToBlogLayout,
+				content: pathToContentLayout
 			}
 		})
 	],

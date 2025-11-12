@@ -1,0 +1,65 @@
+---
+title: Terms of service
+layout: content
+---
+
+<div class="text-right text-gray-500 mb-8 italic text-sm">Last Updated: 12 November 2025</div>
+
+## Acceptable Use Policy
+
+Belcoda is software for people who are trying to make the world a better place. As such, Belcoda must not be used by any organization, website, product or service which:
+
+### Abuses of human rights:
+
+- Human trafficking
+- Sex trafficking
+- Slavery or indentured servitude
+- Discrimination based on age, gender, gender identity, race, sexuality, religion, nationality
+- Hate speech
+- Environmental destruction:
+- The extraction or sale of fossil fuels
+- The destruction of habitats for threatened or endangered species, including through deforestation or burning of forests
+- The abuse, inhumane killing or neglect of animals under human control
+- Industrial processes that generate waste products that threaten life
+
+### Conflict and war:
+- Warfare
+- War crimes
+- Weapons manufacturing
+- Violence (except when required to protect public safety)
+- Addictive or destructive products and services:
+- Gambling
+- Tobacco
+- Products that encourage adversely addictive behaviours
+
+### Dissuades, lobbies against, or derives a majority of income from actions that discourage or frustrate:
+- Peace
+- Access to the rights set out in the Universal Declaration of Human Rights and the Convention on the Rights of the Child
+- Democratic processes
+- Peaceful assembly and association (including worker associations)
+- A sustainable environment
+
+*Note: The above categories are taken from Do No Harm Software License*
+
+## Communications and consent
+You are responsible for obtaining consent from anyone you contact using Belcoda’s email, WhatsApp, or other communication tools. The specific type of consent required may depend on the privacy laws and regulations in your jurisdiction.
+
+## Data and privacy
+We collect and store your data in accordance with our privacy policy. We do not share your information with third parties, except when necessary to deliver our services.
+
+For example, sending an email requires us to share the recipient's address and message content with a third-party email provider. We only work with reputable providers and aim to share the minimum data required.
+
+At any point, you can contact [info@belcoda.org](mailto:info@belcoda.org) to download a full copy of your data, or to request your workspace's data be deleted.
+
+## Security
+We take security seriously. Our infrastructure runs inside a virtual private network, with all data encrypted at rest and isolated from the public internet. We regularly review and improve our security practices. Full documentation is available on request.
+
+That said, no system can be guaranteed 100% secure. While we take every reasonable measure to protect data stored in Belcoda, absolute security cannot be guaranteed. We encourage users to follow best practices and understand that Belcoda cannot accept liability for data loss or breaches.
+
+If you have questions about our security practices or would like to discuss your specific needs, please contact [info@belcoda.org](mailto:info@belcoda.org).
+
+## Changes to the terms of service
+We may update these terms from time to time. If we do, we will notify you by email. If you continue to use Belcoda after the changes, you will be deemed to have accepted the changes.
+
+
+

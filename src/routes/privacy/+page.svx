@@ -1,0 +1,59 @@
+---
+title: Privacy Policy
+description: The Belcoda Foundation takes privacy very seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used.
+layout: content
+---
+
+<div class="text-right text-gray-500 mb-8 italic text-sm">Last Updated: 12 November 2025</div>
+
+## Collection of Routine Information
+
+The Belcoda application, this website, and other Belcoda products track basic information about their visitors and users.  
+This information includes, but is not limited to, IP addresses, browser details, timestamps, and referring pages.  
+None of this information can personally identify specific visitors or users.  
+The information is tracked for routine administration and maintenance purposes.
+
+## Collection of Personal Information
+
+As part of the necessary operations of Belcoda products, this website, and the Belcoda application, certain personal information is collected.  This information includes, but is not limited to, email addresses, phone numbers, and names.  This information is used to create user accounts, send notifications, and provide customer support.  This information is stored securely and is not shared with third parties.
+
+Self-hosted instances of the Belcoda application do **not** transmit personal information to Belcoda LLC.  The personal information collected via self-hosted instances of the Belcoda application is stored on the instance manager's infrastructure and is not accessible by Belcoda LLC. Depending on its configuration settings, a self-hosted Belcoda instance may transmit routine information to Belcoda LLC.  This information includes, but is not limited to, IP addresses, browser details, timestamps, and referring pages.  None of this information can personally identify specific visitors or users.  The information is tracked for routine administration and maintenance purposes.
+
+## Cookies
+
+Where necessary, this website and other Belcoda products use cookies to store information about a visitor’s preferences and history  
+in order to better serve the visitor or user and/or present them with customized content.
+
+## Advertisement and Other Third Parties
+
+Belcoda does **not** use advertising or third-party trackers, and does **not** share any user information with third parties,  
+other than for the purposes of administering the Belcoda application and related products.
+
+## Links to Third-Party Websites
+
+We have included links on this website, and in other Belcoda products, for your use and reference.
+
+We are not responsible for the privacy policies on these websites.  
+
+You should be aware that the privacy policies of these websites may differ from our own.
+
+## Security
+
+The security of your personal information is important to us, but remember that no method of transmission over the Internet,  
+or method of electronic storage, is 100% secure.  
+
+While we aim to follow industry best practices in relation to security and protection of personal information and user data,  
+we cannot guarantee its absolute security.
+
+## Changes to This Privacy Policy
+
+This Privacy Policy is effective as of **12 November 2025** and will remain in effect except with respect to any changes in its provisions in the future,  
+which will be in effect immediately after being posted on this page.
+
+We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically.  
+If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us,  
+or by placing a prominent notice on our website.
+
+## Contact Information
+
+For any questions or concerns regarding this Privacy Policy, please contact us.

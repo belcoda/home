@@ -64,13 +64,17 @@
 						<h3 class="text-sm/6 font-semibold text-white">Legal</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm/6 text-gray-400 hover:text-white">Privacy policy</a>
+								<a href="/privacy" class="text-sm/6 text-gray-400 hover:text-white"
+									>Privacy policy</a
+								>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-gray-400 hover:text-white">Security</a>
+								<a href="/security" class="text-sm/6 text-gray-400 hover:text-white">Security</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-gray-400 hover:text-white">Terms of service</a>
+								<a href="/terms-of-service" class="text-sm/6 text-gray-400 hover:text-white"
+									>Terms of service</a
+								>
 							</li>
 						</ul>
 					</div>
