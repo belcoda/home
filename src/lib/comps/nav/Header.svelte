@@ -4,6 +4,8 @@
 	};
 	const { variant = 'default' }: Props = $props();
 	const backgroundImage = variant === 'transparent' ? null : '/background-auth.jpg';
+	import Features from './flyouts/Features.svelte';
+	import Resources from './flyouts/Resources.svelte';
 </script>
 
 <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
@@ -23,21 +25,14 @@
 			</a>
 		</div>
 		<div class="hidden lg:flex lg:gap-x-12">
+			<Features open={false}>Features</Features>
 			<a
 				href="#"
 				class="rounded-md px-3 py-2 text-sm/6 font-semibold text-blue-50 hover:bg-gray-100/10 hover:text-white"
 				>About</a
 			>
-			<a
-				href="#"
-				class="rounded-md px-3 py-2 text-sm/6 font-semibold text-blue-50 hover:bg-gray-100/10 hover:text-white"
-				>Features</a
-			>
-			<a
-				href="#"
-				class="rounded-md px-3 py-2 text-sm/6 font-semibold text-blue-50 hover:bg-gray-100/10 hover:text-white"
-				>Resources</a
-			>
+			<Resources open={false}>Resources</Resources>
+
 			<a
 				href="/pricing"
 				class="rounded-md px-3 py-2 text-sm/6 font-semibold text-blue-50 hover:bg-gray-100/10 hover:text-white"
