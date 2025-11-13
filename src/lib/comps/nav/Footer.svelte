@@ -1,3 +1,7 @@
+<script lang="ts">
+	import StatusIndicator from '$lib/comps/widgets/StatusIndicator.svelte';
+</script>
+
 <footer class="bg-gray-900">
 	<div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
 		<div class="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -111,7 +115,8 @@
 			</form>
 		</div> -->
 		<div class="mt-32 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
-			<div class="flex gap-x-6 md:order-2">
+			<div class="flex items-center gap-x-6 md:order-2">
+				<StatusIndicator />
 				<a href="#" class="text-gray-400 hover:text-white">
 					<span class="sr-only">Facebook</span>
 					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6">
