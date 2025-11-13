@@ -1,0 +1,100 @@
+---
+title: Why We Chose Zero
+author: Django Merope
+layout: blog
+tag: Technology
+darken_image: true
+image: https://images.unsplash.com/photo-1656322014403-298004da9460?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+description: How query-powered sync enables instant performance, minimal data usage, and offline-first reliability for community organizing—even on slow connections and low-powered devices.
+author_avatar: /avatars/django.jpg
+author_title: Project lead
+date: 2025/11/13
+
+---
+
+When we set out to build Belcoda, we had a clear mandate: create management tools that work for community organizations and nonprofits everywhere — not just in places with fast internet and expensive devices.
+
+That "everywhere" matters. It means organizers coordinating volunteers in rural areas with spotty cell coverage. It means activists managing campaigns from older Android phones with limited data plans. It means community leaders who can't afford to lose work when their connection drops, or waste precious bandwidth syncing data they don't need.
+
+Traditional web applications fail these users. We needed something fundamentally different.
+
+## The Problem with Traditional Sync
+
+Most web applications today rely on REST APIs or GraphQL subscriptions. When you click a button, your app sends a request to a server, waits for a response, then updates the interface. If your connection is slow, every action feels sluggish. If it drops entirely, your app stops working.
+
+Even "modern" sync solutions designed for real-time collaboration often sync entire database tables to the client, or require developers to manually predict and pre-sync the data users might need. This wastes bandwidth syncing data you never use, and still leaves you without functionality when offline.
+
+For organizations working on limited budgets and unreliable infrastructure, this isn't just inconvenientit's a barrier to access. Data costs money. Slow, unresponsive interfaces waste time. Connection drops lose work.
+
+We needed our platform to:
+- **Respond instantly** even on slow or unreliable connections
+- **Work completely offline** and sync seamlessly when reconnected
+- **Minimize data usage** to reduce costs for users
+- **Run smoothly on older, low-powered Android handsets** common in our target communities
+- **Handle real-time collaboration** when multiple organizers work on the same data
+
+## What is Zero?
+
+[Zero](https://zero.rocicorp.dev/) is what they call a "query-powered sync engine," and that distinction is crucial.
+
+Instead of syncing entire database tables (or requiring developers to guess what data to sync), Zero syncs only the data your current queries actually request. Each client maintains a local SQLite replica with just the data it needs. When you run a query, Zero ensures that replica stays synchronized with the serverand only that data.
+
+This architecture enables three things we desperately needed:
+
+1. **Instant local performance**: All queries run against local SQLite, giving you sub-millisecond response times regardless of connection speed
+2. **Efficient bandwidth usage**: Only the data you're actually viewing gets synced, and subsequent updates are incremental
+3. **True offline capability**: Your local replica contains everything your current view needs, so the app works completely offline
+
+## Why This Matters for Community Organizing
+
+Let's make this concrete with real scenarios from community organizing:
+
+**Field organizing**: An organizer attends a community event with spotty WiFi. They can open their group list, add new members who sign up, record their contact information, and assign them to volunteer tasksall while completely offline. When they reconnect (maybe hours later, back at the office), everything syncs automatically. No lost work, no conflicts to manually resolve, no waiting for slow connections.
+
+**Real-time coordination**: Multiple staff members manage a voter registration drive. When one person adds a new contact, others see it appear instantly in their interface. When someone assigns volunteers to specific neighborhoods, those assignments update in real-time across all devices. Zero's Incremental View Maintenance keeps complex queries synchronized automaticallyno manual polling, no delayed updates, no stale data.
+
+**Data efficiency**: An organizer on a limited mobile data plan opens a list of 20 upcoming events. With Zero, only those 20 events sync to their devicenot the entire events table with thousands of historical records. When they scroll to view event details, that specific data syncs on demand. For users paying for every megabyte, this efficiency is essential.
+
+**Low-powered devices**: Because queries run against local SQLite rather than requiring network round-trips for every action, the interface responds instantly even on older smartphones. Organizers don't need the latest flagship device to use Belcoda effectively.
+
+## Technical Advantages
+
+For developers building on Belcoda (or anyone evaluating Zero for their own projects), several technical characteristics stood out:
+
+**Simplified architecture**: Most features can be built entirely client-side without implementing separate HTTP API endpoints. Zero handles the complexity of sync, permissions, and real-time updates. You write queries and mutations; Zero makes them work offline and sync correctly.
+
+**Built-in row-level permissions**: Zero enforces permission rules at the database level, not just in application code. We define who can access which workspaces, groups, and data directly in our schema. The sync engine respects these rules automaticallyunauthorized data never reaches the client.
+
+**Type safety**: Zero provides end-to-end TypeScript types for queries and mutations. This catches errors at compile time rather than in production, which is critical when you're building tools for communities that depend on reliability.
+
+**Developer experience**: Without Zero, building real-time, offline-first collaboration requires substantial infrastructure: state management libraries, WebSocket connections, conflict resolution logic, optimistic UI updates, cache invalidation strategies. Zero handles all of this out of the box. Features that might take days to build correctly take hours.
+
+This matters for Belcoda's mission. Faster development means we can iterate more quickly based on community feedback. Less infrastructure complexity means fewer bugs. Fewer bugs means more reliable tools for the communities we serve.
+
+## The Tradeoff: Cutting-Edge Technology
+
+We should be honest about one tradeoff: Zero is in public alpha. It's production-ready (and we're using it in production), but it's young technology. Choosing it means we're on the cutting edge, which carries risk.
+
+We're mitigating this by:
+- Staying closely engaged with the Zero team and community
+- Conducting our own security audits of the system
+- Keeping our implementation up to date with the latest releases
+- Contributing back improvements and bug fixes where we can
+
+For us, the benefits outweigh this risk. The alternativetrying to build equivalent offline-first, real-time, bandwidth-efficient sync ourselveswould be far more risky and time-consuming.
+
+## Building Technology That Works for Everyone
+
+Belcoda exists to ensure everyone working toward positive change has the technology to succeed. "Everyone" can't be conditional on having fast internet, expensive devices, or unlimited data plans.
+
+Zero gives us the technical foundation to build tools that actually work in the conditions our users face: unreliable connections, limited bandwidth, constrained hardware. It lets us build interfaces that feel instant and professional, even when internet infrastructure is lacking.
+
+Most importantly, it lets us focus our development time on understanding community organizing needs and building features that serve themrather than reinventing sync infrastructure.
+
+Technology choices are rarely just technical. They're about values. Choosing Zero reflects our commitment to accessibility, to building tools that work for organizers everywhere, regardless of their resources or infrastructure.
+
+That's why we chose Zero.
+
+---
+
+*Interested in learning more about Belcoda's technical architecture? Check out our [developer documentation](https://github.com/belcoda/belcoda) or reach out to our team.*
