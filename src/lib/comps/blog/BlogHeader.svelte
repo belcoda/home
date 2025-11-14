@@ -1,11 +1,17 @@
-<div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:px-24 xl:py-36">
+<script lang="ts">
+</script>
+
+<div
+	class="relative isolate overflow-hidden bg-gray-900 bg-cover bg-center bg-no-repeat px-6 py-24 shadow-2xl sm:px-24 xl:py-36"
+	style="background-image: url('/images/backgrounds/powertools.webp');"
+>
 	<h2
-		class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl"
+		class="mx-auto max-w-3xl text-center text-4xl font-black tracking-tight text-white uppercase italic sm:text-5xl"
 	>
 		Power Tools
 	</h2>
-	<p class="mx-auto mt-6 max-w-2xl text-center text-lg text-gray-300">
-		Deep dives into the technology powering some of the world's most impactful organizing campaigns.
+	<p class="mx-auto mt-6 max-w-2xl text-center text-lg text-gray-200">
+		Deep insights from some of the most impactful organizing campaigns ever.
 	</p>
 	<form class="mx-auto mt-10 flex max-w-md gap-x-4">
 		<label for="email-address" class="sr-only">Email address</label>
@@ -16,12 +22,12 @@
 			required
 			placeholder="Enter your email"
 			autocomplete="email"
-			class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+			class="min-w-0 flex-auto rounded-md bg-white/8 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/30 placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-gray-100 sm:text-sm/6"
 		/>
 		<button
 			type="submit"
-			class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-			>Send me updates!</button
+			class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-black text-gray-900 uppercase italic shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+			>Get it delivered</button
 		>
 	</form>
 	<svg
@@ -45,8 +51,8 @@
 				gradientUnits="userSpaceOnUse"
 				gradientTransform="translate(512 512) rotate(90) scale(512)"
 			>
-				<stop stop-color="#7775D6" />
-				<stop offset="1" stop-color="#E935C1" stop-opacity="0" />
+				<stop stop-color="#777586" />
+				<stop offset="1" stop-color="#1925A1" stop-opacity="0" />
 			</radialGradient>
 		</defs>
 	</svg>
