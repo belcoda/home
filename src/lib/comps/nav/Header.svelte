@@ -6,6 +6,8 @@
 	const backgroundImage = variant === 'transparent' ? null : '/background-auth.jpg';
 	import Features from './flyouts/Features.svelte';
 	import Resources from './flyouts/Resources.svelte';
+
+	import MobileMenu from '$lib/comps/nav/MobileMenu.svelte';
 </script>
 
 <header
@@ -39,40 +41,18 @@
 		</div>
 		<div class="flex flex-1 items-center justify-end gap-x-2">
 			<a
-				href="#"
+				href="http://app.belcoda.com/login"
 				class="hidden rounded-md px-3 py-2 text-sm/6 font-semibold text-blue-50 hover:bg-gray-100/10 hover:text-white lg:block"
 				>Log in</a
 			>
 			<a
-				href="#"
+				href="http://app.belcoda.com/signup"
 				class="rounded-md bg-white px-3 py-2 text-sm font-extrabold text-blue-900 shadow-xs hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
 				>Get started</a
 			>
 		</div>
 		<div class="flex lg:hidden">
-			<button
-				type="button"
-				command="show-modal"
-				commandfor="mobile-menu"
-				class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-			>
-				<span class="sr-only">Open main menu</span>
-				<svg
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="1.5"
-					data-slot="icon"
-					aria-hidden="true"
-					class="size-6"
-				>
-					<path
-						d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					/>
-				</svg>
-			</button>
+			<MobileMenu />
 		</div>
 	</nav>
 </header>
