@@ -112,8 +112,8 @@
 			</div>
 			<div class="bg-gray-50 p-8">
 				<div class="flex justify-between">
-					<h3 class="text-sm/6 font-semibold text-gray-500">Recent posts</h3>
-					<a href="#" class="text-sm/6 font-semibold text-indigo-600"
+					<h3 class="text-sm/6 font-semibold text-gray-500">Latest posts</h3>
+					<a href="/blog" class="text-sm/6 font-semibold text-indigo-600"
 						>See all <span aria-hidden="true">&rarr;</span></a
 					>
 				</div>
