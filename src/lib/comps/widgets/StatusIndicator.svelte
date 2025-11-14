@@ -7,11 +7,11 @@
 		.then((data) => data.page.status);
 </script>
 
-<a href="https://belcoda.instatus.com" target="_blank">
+<a href="https://belcoda.instatus.com" target="_blank" class="flex">
 	{#await status}
 		<div class="flex items-center gap-x-2">
 			<div class="h-2 w-2 rounded-full bg-gray-200"></div>
-			<div class="text-sm text-gray-500">Checking status...</div>
+			<div class=" text-sm text-gray-500">Checking status...</div>
 		</div>
 	{:then data}
 		<div class="flex items-center gap-x-2">
