@@ -5,11 +5,19 @@
 	class="relative isolate overflow-hidden bg-gray-900 bg-cover bg-center bg-no-repeat px-6 py-24 shadow-2xl sm:px-24 xl:py-36"
 	style="background-image: url('/images/backgrounds/powertools.webp');"
 >
-	<h2
-		class="mx-auto max-w-3xl text-center text-4xl font-black tracking-tight text-white uppercase italic sm:text-5xl"
-	>
-		Power Tools
-	</h2>
+	<div class="flex items-center justify-center">
+		<div class="">
+			<h2
+				class="mx-auto max-w-3xl text-center text-4xl font-black tracking-tight text-white uppercase italic sm:text-5xl"
+			>
+				Power Tools
+			</h2>
+			<h4 class="mx-auto max-w-3xl text-right text-lg font-extralight tracking-tight text-gray-200">
+				The Belcoda Blog
+			</h4>
+		</div>
+	</div>
+
 	<p class="mx-auto mt-6 max-w-2xl text-center text-lg text-gray-200">
 		Deep insights from some of the most impactful organizing campaigns ever.
 	</p>
