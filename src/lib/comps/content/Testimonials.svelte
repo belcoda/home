@@ -108,7 +108,7 @@
 							</div>
 						</figcaption>
 					</figure>
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
 								“Consequatur ut atque. Itaque nostrum molestiae id veniam eos cumque. Ut quia eum
@@ -126,7 +126,7 @@
 								<div class="text-gray-600">@driesvincent</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 				</div>
 				<div class="space-y-8 xl:row-start-1">
 					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
@@ -148,7 +148,7 @@
 							</div>
 						</figcaption>
 					</figure>
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
 								“Nam nesciunt dolorem dolor asperiores cum. Incidunt molestiae quis deleniti vitae
@@ -166,7 +166,7 @@
 								<div class="text-gray-600">@courtneyhenry</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 				</div>
 			</div>
 			<div class="space-y-8 xl:contents xl:space-y-0">
@@ -190,7 +190,7 @@
 							</div>
 						</figcaption>
 					</figure>
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
 								“Aliquid dolore praesentium ratione. Cumque ea officia repellendus laboriosam. Vitae
@@ -208,7 +208,7 @@
 								<div class="text-gray-600">@whitneyfrancis</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 				</div>
 				<div class="space-y-8 xl:row-span-2">
 					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
@@ -249,7 +249,7 @@
 							</div>
 						</figcaption>
 					</figure>
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
 								“Temporibus ea molestiae impedit adipisci perspiciatis illo aliquid. Quis ut ratione
@@ -267,7 +267,7 @@
 								<div class="text-gray-600">@emilyselman</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 				</div>
 			</div>
 		</div>
