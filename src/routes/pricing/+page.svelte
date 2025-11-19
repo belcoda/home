@@ -5,6 +5,7 @@
 	import CTA1 from '$lib/comps/content/CTA1.svelte';
 
 	import PricingGridItem from './PricingGridItem.svelte';
+	let paymentSchedule: 'monthly' | 'annual' = $state('monthly');
 </script>
 
 <Header />
@@ -33,6 +34,7 @@
 									type="radio"
 									name="frequency"
 									value="monthly"
+									bind:group={paymentSchedule}
 									checked
 									class="absolute inset-0 appearance-none rounded-full"
 								/>
@@ -42,7 +44,8 @@
 								<input
 									type="radio"
 									name="frequency"
-									value="annually"
+									value="annual"
+									bind:group={paymentSchedule}
 									class="absolute inset-0 appearance-none rounded-full"
 								/>
 								<span class="text-white">Annually</span>
@@ -85,7 +88,7 @@
 							id="tier-tier-starter"
 							class="text-sm/6 font-semibold text-white group-data-featured/tier:text-gray-900"
 						>
-							Grassroots
+							Organizer
 						</h3>
 						<div
 							class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-stretch"
@@ -97,7 +100,7 @@
 									Free
 								</p>
 								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
+									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
 								>
 									$0
 								</p>
@@ -140,12 +143,12 @@
 								<p
 									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
 								>
-									$179
+									$249
 								</p>
 								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
+									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
 								>
-									$1,799
+									$2,499
 								</p>
 								<div class="text-sm">
 									<p class="text-white group-data-featured/tier:text-gray-900">USD</p>
@@ -155,19 +158,16 @@
 										Billed monthly
 									</p>
 									<p
-										class="text-gray-400 group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden group-data-featured/tier:text-gray-500"
+										class="text-gray-400 group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-500"
 									>
 										Billed annually
 									</p>
 								</div>
 							</div>
-							<button
-								type="submit"
-								name="tier"
-								value="tier-scale"
-								aria-describedby="tier-tier-scale"
+							<a
+								href={`/pricing/subscribe/institution?paymentSchedule=${paymentSchedule}`}
 								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-indigo-600 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-indigo-600"
-								>Subscribe</button
+								>Subscribe now</a
 							>
 						</div>
 						<div class="mt-8 flow-root sm:mt-10">
@@ -204,7 +204,7 @@
 									Get in touch
 								</p>
 								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
+									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
 								>
 									Get in touch
 								</p>
@@ -212,7 +212,7 @@
 							<a
 								href="https://cal.com/django-merope-8wwjmi/belcoda-network-exploration-call"
 								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-indigo-600 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-indigo-600"
-								>Get in touch</a
+								>Schedule a call</a
 							>
 						</div>
 						<div class="mt-8 flow-root sm:mt-10">
@@ -220,70 +220,11 @@
 								role="list"
 								class="-my-2 divide-y divide-white/5 border-t border-white/5 text-sm/6 text-white group-data-featured/tier:divide-gray-900/5 group-data-featured/tier:border-gray-900/5 group-data-featured/tier:text-gray-600 lg:border-t-0"
 							>
-								<li class="flex gap-x-3 py-2">
-									<svg
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										data-slot="icon"
-										aria-hidden="true"
-										class="h-6 w-5 flex-none text-gray-500 group-data-featured/tier:text-indigo-600"
-									>
-										<path
-											d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-											clip-rule="evenodd"
-											fill-rule="evenodd"
-										/>
-									</svg>
-									Custom domains
-								</li>
-								<li class="flex gap-x-3 py-2">
-									<svg
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										data-slot="icon"
-										aria-hidden="true"
-										class="h-6 w-5 flex-none text-gray-500 group-data-featured/tier:text-indigo-600"
-									>
-										<path
-											d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-											clip-rule="evenodd"
-											fill-rule="evenodd"
-										/>
-									</svg>
-									Edge content delivery
-								</li>
-								<li class="flex gap-x-3 py-2">
-									<svg
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										data-slot="icon"
-										aria-hidden="true"
-										class="h-6 w-5 flex-none text-gray-500 group-data-featured/tier:text-indigo-600"
-									>
-										<path
-											d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-											clip-rule="evenodd"
-											fill-rule="evenodd"
-										/>
-									</svg>
-									Advanced analytics
-								</li>
-								<li class="flex gap-x-3 py-2">
-									<svg
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										data-slot="icon"
-										aria-hidden="true"
-										class="h-6 w-5 flex-none text-gray-500 group-data-featured/tier:text-indigo-600"
-									>
-										<path
-											d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-											clip-rule="evenodd"
-											fill-rule="evenodd"
-										/>
-									</svg>
-									Quarterly workshops
-								</li>
+								<PricingGridItem>SSO & custom access control</PricingGridItem>
+								<PricingGridItem>Dedicated support engineer</PricingGridItem>
+								<PricingGridItem>Advanced analytics & reporting</PricingGridItem>
+								<PricingGridItem>Cross-network organizing</PricingGridItem>
+								<PricingGridItem>White-glove onboarding</PricingGridItem>
 							</ul>
 						</div>
 					</div>
@@ -306,7 +247,7 @@
 
 						<div class="mt-10 space-y-10">
 							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Features</h4>
+								<h4 class="text-sm/6 font-semibold text-gray-900">Core</h4>
 								<div class="relative mt-6">
 									<!-- Fake card background -->
 									<div
@@ -321,7 +262,7 @@
 											<div
 												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
 											>
-												<dt class="pr-4 text-gray-600">Edge content delivery</dt>
+												<dt class="pr-4 text-gray-600">Edge content self-delivery</dt>
 												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
 													<svg
 														viewBox="0 0 20 20"
@@ -1812,7 +1753,7 @@
 											scope="row"
 											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
 										>
-											Quarterly workshops
+											Quarterly worksdhops
 											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
 										</th>
 										<td class="relative w-1/4 px-4 py-0 text-center">
