@@ -166,7 +166,7 @@
 								</div>
 							</div>
 							<a
-								href={`/pricing/subscribe/institution?paymentSchedule=${paymentSchedule}`}
+								href={`https://app.belcoda.com/signup?subscription=institution&paymentSchedule=${paymentSchedule}`}
 								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-indigo-600 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-indigo-600"
 								>Subscribe now</a
 							>
