@@ -87,4 +87,4 @@ Because when three billion people use a platform every day—when messages have 
 
 You build around it.
 
-<Newsletter />
+<NewsletterSignup />
