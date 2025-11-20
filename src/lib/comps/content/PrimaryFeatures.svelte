@@ -16,6 +16,8 @@
 	const screenshotReporting = '/screenshots/reporting.png';
 	const screenshotVatReturns = '/screenshots/vat-returns.png';
 
+	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
+
 	const features = [
 		{
 			title: 'Community',
@@ -103,14 +105,14 @@
 			</div>
 			<div class="mt-10 flex items-center justify-center gap-x-6">
 				<a
-					href="#"
+					href="http://app.belcoda.com/signup"
 					class="rounded-lg bg-white px-6 py-3 font-extrabold text-blue-900 shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
 					>Get started</a
 				>
 				<a
-					href="#"
+					href={bookACallUrl}
 					class="rounded-lg px-5 py-3 font-semibold text-white hover:bg-white/10 hover:text-white"
-					>What We Believe <span aria-hidden="true">→</span></a
+					>Schedule a demo <span aria-hidden="true">→</span></a
 				>
 			</div>
 		</div>
@@ -142,7 +144,7 @@
 									aria-controls="tabpanel-{featureIndex}"
 									tabindex={selectedIndex === featureIndex ? 0 : -1}
 									class={clsx(
-										'w-full text-left font-display text-lg font-extrabold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500',
+										'font-display w-full text-left text-lg font-extrabold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500',
 										selectedIndex === featureIndex
 											? 'text-blue-600 lg:text-white'
 											: 'text-blue-100 hover:text-white lg:text-white'

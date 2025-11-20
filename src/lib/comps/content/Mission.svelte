@@ -17,23 +17,21 @@
 		</div>
 		<section class="mt-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
 			<div class="lg:pr-8">
-				<h2 class="text-2xl font-extrabold tracking-tight text-pretty text-gray-900">
+				<h2 class="text-2xl font-semibold tracking-tight text-pretty text-gray-900">
 					An opinionated toolkit
 				</h2>
 				<p class="mt-6 text-base/7 text-gray-600">
-					Belcoda is specifically engineered to support and grow <em>directed networks</em>:
-					distributed organizing campaigns which are large, connected, active and aligned.
+					Belcoda is built to support and grow <em>directed networks</em> — distributed organizing campaigns
+					which are large, connected, active and aligned.
 				</p>
-				<p class="mt-6 text-base/7 text-gray-600">
+				<p class="mt-4 text-base/7 text-gray-600">
 					We provide the tools to grow your community, drive people towards deeper and more
 					meaningful modes of engagement, build cross-network links, while keeping everyone aligned
 					on your campaign’s objectives and strategy.
 				</p>
-				<p class="mt-8 text-base/7 text-gray-600">
-					Belcoda might <em>not</em> be for you if you need top-down control prefer keeping things
-					slow and steady. For more detail, see
-					<a href="/about" class="text-blue-800 hover:underline">What We Believe About Organizing</a
-					>.
+				<p class="mt-4 text-base/7 text-gray-600">
+					Belcoda might <em>not</em> be for you if you need top-down control prefer keeping things slow
+					and steady.
 				</p>
 			</div>
 			<div class="pt-16 lg:row-span-2 lg:-mr-16 xl:mr-auto">
@@ -79,22 +77,20 @@
 				</div>
 			</div>
 			<div class="max-lg:mt-16 lg:col-span-1">
-				<h2 class="text-2xl font-extrabold tracking-tight text-pretty text-gray-900">
-					Our mission
+				<h2 class="text-2xl font-semibold tracking-tight text-pretty text-gray-900">
+					Built around WhatsApp
 				</h2>
 				<p class="mt-6 text-base/7 text-gray-600">
-					With billions of users, WhatsApp is one of the most powerful organizing tools of all time.
-					That’s why Belcoda was built around WhatsApp. You can create interactive action threads,
-					send individual messages, and even allow people to sign up to events via WhatsApp and
-					WhatsApp QR codes.
+					With billions of users and unparalleled engagement, we believe WhatsApp may well be the
+					most powerful organizing tool of all time. That’s why Belcoda was built around WhatsApp.
 				</p>
-				<p class="mt-8 text-base/7 text-gray-600">
-					And we’re not done yet — we’ve got plenty of ideas about bringing new WhatsApp features to
-					Belcoda. For more details on what’s coming, check out our <a
-						href="/about"
-						class="text-blue-800 hover:underline">Roadmap</a
-					>. We won’t rest until Belcoda is the single most powerful WhatsApp communication platform
-					in the world.
+				<p class="mt-4 text-base/7 text-gray-600">
+					We have integrated WhatsApp into every part of Belcoda, from community management to event
+					registration to action campaigns.
+				</p>
+				<p class="mt-4 text-base/7 text-gray-600">
+					You can create interactive action threads, send individual messages, and even allow people
+					to sign up to events via WhatsApp and WhatsApp QR codes.
 				</p>
 			</div>
 		</section>

@@ -4,6 +4,7 @@
 	import Code from '$lib/comps/content/featuregrid/Code.svelte';
 
 	import imageGlobeSliceHires from './assets/globe-slice-hires.png';
+	import securityTailwindPlus from './assets/security-tailwindplus.png';
 </script>
 
 <div class="-mt-20 bg-gray-50 pt-12 pb-40">
@@ -50,7 +51,7 @@
 						</p>
 						<p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
 							Our goal is 0ms response time for 99% of actions, even on slow connections.
-							<a href="/" class="text-blue-800 hover:underline">Learn how</a>.
+							<a href="/blog/why-we-chose-zero" class="text-blue-800 hover:underline">Learn how</a>.
 						</p>
 					</div>
 					<div class="mt-8 w-full px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
@@ -78,8 +79,8 @@
 					</div>
 					<div class="@container flex flex-1 items-center max-lg:py-6 lg:pb-2">
 						<img
-							src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-security.png"
-							alt=""
+							src={securityTailwindPlus}
+							alt="Shield icon"
 							class="h-[min(152px,40cqw)] object-cover"
 						/>
 					</div>

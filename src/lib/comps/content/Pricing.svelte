@@ -1,81 +1,7 @@
 <script lang="ts">
 	import Badge from '$lib/comps/widgets/Badge.svelte';
 
-	const tiers = [
-		{
-			name: 'Organization',
-			price: 0,
-			description: 'Everything needed for distributed campaigns.',
-			interval: null,
-			features: [
-				{
-					name: 'All platform features'
-				},
-				{
-					name: '3 admin accounts'
-				},
-				{
-					name: 'Unlimited contacts, volunteers, and organizers'
-				},
-				{
-					name: 'Access to API & integrations'
-				},
-				{
-					name: 'Community & AI support'
-				}
-			]
-		},
-		{
-			name: 'Institution',
-			price: 279,
-			description: 'For organizations and campaigns',
-			interval: 'admin',
-			features: [
-				{
-					name: 'All free features'
-				},
-				{
-					name: '5 admin accounts'
-				},
-
-				{
-					name: 'Webhooks'
-				},
-				{
-					name: 'Custom domain'
-				},
-				{
-					name: 'Email & page templates'
-				},
-				{
-					name: 'Email & live chat support'
-				}
-			]
-		},
-		{
-			name: 'Network',
-			price: 1879,
-			interval: 'month',
-			description: 'For large organizations and campaigns',
-			features: [
-				{
-					name: 'All institution features'
-				},
-				{
-					name: 'Cross-network organizing'
-				},
-				{
-					name: 'Advanced analytics & reporting'
-				},
-				{
-					name: 'SSO & role based access control'
-				},
-				{
-					name: 'Dedicated support engineer'
-				}
-			]
-		}
-	];
+	import { tiers } from '$lib/comps/content/pricing';
 	const backgroundImage = '/background-auth.jpg';
 </script>
 
@@ -91,8 +17,8 @@
 		</div>
 		<div class="relative mt-6">
 			<p class="mx-auto max-w-2xl text-lg font-medium text-pretty text-blue-200 sm:text-xl/8">
-				We try to only charge for advanced features for enterprise and network users. Most
-				organizers should be able to use Belcoda forever without paying a cent.
+				Belcoda is free for everyone. Paid plans include additional features designed for networks
+				and institutions.
 			</p>
 		</div>
 	</div>
@@ -110,11 +36,18 @@
 									{tier.name}
 								</h3>
 								<div class="mt-4 flex items-baseline gap-x-2">
-									<span class="text-5xl font-semibold tracking-tight text-gray-900">
-										{tier.price === 0 ? 'Free' : `$${tier.price}`}
-									</span>
-									{#if tier.interval}
-										<span class="text-base/7 font-semibold text-gray-600">/month</span>
+									{#if tier.name === 'Organization'}
+										<span class="text-4xl font-semibold tracking-tight text-gray-900">Free</span>
+									{/if}
+									{#if tier.name === 'Network'}
+										<span class="text-4xl font-semibold tracking-tight text-gray-900"
+											>Get in touch</span
+										>
+									{/if}
+									{#if tier.name === 'Institution'}
+										<span class="text-4xl font-semibold tracking-tight text-gray-900"
+											>${tier.price}</span
+										>
 									{/if}
 								</div>
 								<p class="mt-6 text-base/7 text-gray-600">
@@ -159,11 +92,12 @@
 							<p class="mt-1 text-base/7 text-gray-600">
 								Need paid features, but don't have the budget? The Belcoda Foundation partners with
 								philanthropic foundations to provide software grants and support to eligible
-								locally-led grassroots initatives in the Global South.
+								locally-led grassroots initiatives in the Global South.
 							</p>
 							<div class="mt-6">
 								<a
-									href="#"
+									href="https://belcoda.org"
+									target="_blank"
 									class="rounded-md bg-blue-900 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-800 hover:inset-ring-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800"
 									>Learn more <span aria-hidden="true">&rarr;</span></a
 								>
