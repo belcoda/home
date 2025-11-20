@@ -6,6 +6,7 @@
 
 	import PricingGridItem from './PricingGridItem.svelte';
 	let paymentSchedule: 'monthly' | 'annual' = $state('monthly');
+	import { tiers } from '$lib/comps/content/pricing';
 </script>
 
 <Header />
@@ -143,12 +144,12 @@
 								<p
 									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
 								>
-									$249
+									$279
 								</p>
 								<p
 									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
 								>
-									$2,499
+									$2,799
 								</p>
 								<div class="text-sm">
 									<p class="text-white group-data-featured/tier:text-gray-900">USD</p>
