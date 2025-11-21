@@ -2,6 +2,10 @@
 	import { type Snippet } from 'svelte';
 	let { children, open = $bindable(false) }: { children: Snippet; open: boolean } = $props();
 	import * as Popover from '$lib/comps/ui/popover/index.js';
+	import { getPosts } from '$lib/comps/blog/posts.js';
+	import ShieldCheckIcon from '@lucide/svelte/icons/shield-check';
+	import CircleQuestionIcon from '@lucide/svelte/icons/circle-question-mark';
+	const posts = getPosts(3);
 </script>
 
 <Popover.Root bind:open>
@@ -29,56 +33,34 @@
 					<div
 						class="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
 					>
-						<svg
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.5"
-							data-slot="icon"
-							aria-hidden="true"
-							class="size-6 text-gray-600 group-hover:text-indigo-600"
-						>
-							<path
-								d="M16.712 4.33a9.027 9.027 0 0 1 1.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 0 0-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 0 1 0 9.424m-4.138-5.976a3.736 3.736 0 0 0-.88-1.388 3.737 3.737 0 0 0-1.388-.88m2.268 2.268a3.765 3.765 0 0 1 0 2.528m-2.268-4.796a3.765 3.765 0 0 0-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 0 1-1.388.88m2.268-2.268 4.138 3.448m0 0a9.027 9.027 0 0 1-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0-3.448-4.138m3.448 4.138a9.014 9.014 0 0 1-9.424 0m5.976-4.138a3.765 3.765 0 0 1-2.528 0m0 0a3.736 3.736 0 0 1-1.388-.88 3.737 3.737 0 0 1-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 0 1-1.652-1.306 9.027 9.027 0 0 1-1.306-1.652m0 0 4.138-3.448M4.33 16.712a9.014 9.014 0 0 1 0-9.424m4.138 5.976a3.765 3.765 0 0 1 0-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 0 1 1.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 0 0-1.652 1.306A9.025 9.025 0 0 0 4.33 7.288"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
+						<CircleQuestionIcon class="size-6 text-gray-600 group-hover:text-indigo-600" />
 					</div>
 					<div>
-						<a href="#" class="font-semibold text-gray-900">
-							Help center
+						<a
+							href="https://support.belcoda.com/docs"
+							target="_blank"
+							class="font-semibold text-gray-900"
+						>
+							Guides & documentation
 							<span class="absolute inset-0"></span>
 						</a>
-						<p class="mt-1 text-gray-600">Get all of your questions answered</p>
+						<p class="mt-1 text-gray-600">
+							Hit the ground running with tutorials and feature guides
+						</p>
 					</div>
 				</div>
 				<div class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
 					<div
 						class="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
 					>
-						<svg
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.5"
-							data-slot="icon"
-							aria-hidden="true"
-							class="size-6 text-gray-600 group-hover:text-indigo-600"
-						>
-							<path
-								d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
+						<ShieldCheckIcon class="size-6 text-gray-600 group-hover:text-indigo-600" />
 					</div>
 					<div>
-						<a href="#" class="font-semibold text-gray-900">
-							Guides
+						<a href="/security" target="_blank" class="font-semibold text-gray-900">
+							Security
 							<span class="absolute inset-0"></span>
 						</a>
-						<p class="mt-1 text-gray-600">Learn how to maximize our platform</p>
+						<p class="mt-1 text-gray-600">What we're doing to protect your data and privacy</p>
 					</div>
 				</div>
 				<div class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
@@ -103,10 +85,13 @@
 					</div>
 					<div>
 						<a href="#" class="font-semibold text-gray-900">
-							Events
+							Developers <span
+								class="ml-2 rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800"
+								>Coming soon!</span
+							>
 							<span class="absolute inset-0"></span>
 						</a>
-						<p class="mt-1 text-gray-600">See meet-ups and other events near you</p>
+						<p class="mt-1 text-gray-600">API reference and SDKs</p>
 					</div>
 				</div>
 			</div>
@@ -118,27 +103,24 @@
 					>
 				</div>
 				<ul role="list" class="mt-6 space-y-6">
-					<li class="relative">
-						<time datetime="2023-03-05" class="block text-xs/6 text-gray-600">Mar 5, 2023</time>
-						<a href="#" class="block truncate text-sm/6 font-semibold text-gray-900">
-							Boost your conversion rate
-							<span class="absolute inset-0"></span>
-						</a>
-					</li>
-					<li class="relative">
-						<time datetime="2023-02-25" class="block text-xs/6 text-gray-600">Feb 25, 2023</time>
-						<a href="#" class="block truncate text-sm/6 font-semibold text-gray-900">
-							How to use search engine optimization to drive traffic to your site
-							<span class="absolute inset-0"></span>
-						</a>
-					</li>
-					<li class="relative">
-						<time datetime="2023-02-21" class="block text-xs/6 text-gray-600">Feb 21, 2023</time>
-						<a href="#" class="block truncate text-sm/6 font-semibold text-gray-900">
-							Improve your customer experience
-							<span class="absolute inset-0"></span>
-						</a>
-					</li>
+					{#each posts as post}
+						<li class="relative">
+							<time datetime={post.date} class="block text-xs/6 text-gray-600"
+								>{new Date(post.date).toLocaleDateString('en-US', {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric'
+								})}</time
+							>
+							<a
+								href={`/blog/${post.slug}`}
+								class="block truncate text-sm/6 font-semibold text-gray-900"
+							>
+								{post.title}
+								<span class="absolute inset-0"></span>
+							</a>
+						</li>
+					{/each}
 				</ul>
 			</div>
 		</div>
