@@ -44,9 +44,7 @@
 							Guides & documentation
 							<span class="absolute inset-0"></span>
 						</a>
-						<p class="mt-1 text-gray-600">
-							Hit the ground running with tutorials and feature guides
-						</p>
+						<p class="mt-1 text-gray-600">Easy-to-follow tutorials on all features</p>
 					</div>
 				</div>
 				<div class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
@@ -60,7 +58,7 @@
 							Security
 							<span class="absolute inset-0"></span>
 						</a>
-						<p class="mt-1 text-gray-600">What we're doing to protect your data and privacy</p>
+						<p class="mt-1 text-gray-600">How we protect your data & privacy</p>
 					</div>
 				</div>
 				<div class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
@@ -84,14 +82,14 @@
 						</svg>
 					</div>
 					<div>
-						<a href="#" class="font-semibold text-gray-900">
+						<a href="https://belcoda.readme.io" target="_blank" class="font-semibold text-gray-900">
 							Developers <span
 								class="ml-2 rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800"
 								>Coming soon!</span
 							>
 							<span class="absolute inset-0"></span>
 						</a>
-						<p class="mt-1 text-gray-600">API reference and SDKs</p>
+						<p class="mt-1 text-gray-600">API reference & SDKs</p>
 					</div>
 				</div>
 			</div>
