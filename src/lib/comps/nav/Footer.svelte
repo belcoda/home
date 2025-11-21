@@ -26,11 +26,6 @@
 									>Events</a
 								>
 							</li>
-							<li>
-								<a href="/features/actions" class="text-sm/6 text-gray-400 hover:text-white"
-									>Actions</a
-								>
-							</li>
 						</ul>
 					</div>
 					<div class="mt-10 md:mt-0">
@@ -95,11 +90,7 @@
 								>
 							</li>
 							<li>
-								<a
-									href="https://belcoda.notion.site/Security-2aa23474e3b3809485cfda8ee892331e?source=copy_link"
-									target="_blank"
-									class="text-sm/6 text-gray-400 hover:text-white">Security</a
-								>
+								<a href="/security" class="text-sm/6 text-gray-400 hover:text-white">Security</a>
 							</li>
 							<li>
 								<a href="/terms-of-service" class="text-sm/6 text-gray-400 hover:text-white"
