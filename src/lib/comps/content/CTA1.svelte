@@ -1,6 +1,7 @@
 <script lang="ts">
 	const backgroundImage = '/background-auth.jpg';
 	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
+	import imageCTA from './assets/belocoda-features-organizing.png';
 </script>
 
 <div
@@ -34,9 +35,9 @@
 				<img
 					width="2432"
 					height="1442"
-					src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
+					src={imageCTA}
 					alt="App screenshot"
-					class="mb-[-30%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+					class="mb-[-40%] rounded-xl"
 				/>
 			</div>
 		</div>
