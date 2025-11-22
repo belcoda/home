@@ -6,7 +6,7 @@ tag: Technology
 darken_image: true
 image: /images/blog/zero.webp
 description: How query-powered sync enables instant performance, minimal data usage, and offline-first reliability for community organizing—even on slow connections and low-powered devices.
-author_avatar: /avatars/django.jpg
+author_avatar: /avatars/django-img.jpg
 slug: why-we-chose-zero
 author_title: Project lead
 date: 2025/11/13

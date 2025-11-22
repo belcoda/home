@@ -46,7 +46,7 @@ const posts = [
 		image: '/images/blog/what-is-power-tools.webp',
 		slug: 'whatsapp-why-and-how',
 		date: '2025-11-13',
-		author: 'Django Merope',
+		author: 'Matteo De Vos',
 		tag: 'WhatsApp'
 	}
 ] as const satisfies Post[];
