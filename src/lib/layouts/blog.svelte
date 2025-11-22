@@ -31,8 +31,27 @@
 
 	const backgroundImage = image || '/background-auth.jpg';
 	import BlogBreadcrumbs from '$lib/comps/blog/BlogBreadcrumbs.svelte';
-	import { slugify } from '$lib/utils';
 </script>
+
+<svelte:head>
+	<title>{title} | Belcoda</title>
+	<meta name="description" content={description} />
+	<meta name="keywords" content={tag} />
+	<meta name="image" content={image} />
+	<meta name="url" content={`https://belcoda.com/blog/${slug}`} />
+	<meta name="type" content="article" />
+	<meta name="published_time" content={date} />
+	<meta name="modified_time" content={date} />
+	<meta name="author" content={author} />
+	<meta name="og:title" content={title} />
+	<meta name="og:description" content={description} />
+	<meta name="og:image" content={image} />
+	<meta name="og:url" content={`https://belcoda.com/blog/${slug}`} />
+	<meta name="og:type" content="article" />
+	<meta name="og:published_time" content={date} />
+	<meta name="og:modified_time" content={date} />
+	<meta name="og:author" content={author} />
+</svelte:head>
 
 <div
 	class="relative flex h-120 w-full items-end justify-start bg-linear-to-b from-blue-200 to-white bg-cover bg-center bg-no-repeat"

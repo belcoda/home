@@ -12,6 +12,11 @@
 	const backgroundImage = '/background-auth.jpg';
 </script>
 
+<svelte:head>
+	<title>{title} | Belcoda</title>
+	<meta name="description" content={description} />
+</svelte:head>
+
 <div
 	class="relative flex h-100 w-full items-end justify-start bg-linear-to-b from-blue-200 to-white bg-cover bg-center bg-no-repeat"
 	style="background-image: url('{backgroundImage}')"
@@ -26,6 +31,6 @@
 	</div>
 </div>
 
-<div class="prose mx-auto mt-12 mb-20 max-w-5xl px-4">{@render children?.()}</div>
+<div class="mx-auto prose mt-12 mb-20 max-w-5xl px-4">{@render children?.()}</div>
 
 <Footer />
