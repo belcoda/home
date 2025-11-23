@@ -6,6 +6,7 @@
 	import CTA1 from '$lib/comps/content/CTA1.svelte';
 	import heroImage from '$lib/comps/content/assets/belocoda-features-organizing.png';
 	import imageAsmaa from '$lib/assets/avatars/asmaa.jpg';
+	import ScreenMobileOneImage from '$lib/comps/content/assets/phone-event-share.webp';
 </script>
 
 <Header />
@@ -18,13 +19,10 @@
 				<div class="mt-12 lg:max-w-lg">
 					<div class="mb-4"><Badge>Events</Badge></div>
 					<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">
-						Bring your community together—online, offline, and everywhere in between.
+						Bring your community together.
 					</p>
 					<p class="mt-6 text-lg/8 text-gray-300">
-						Belcoda Events is built for organizers who want less admin and more connection. Create
-						welcoming event pages, register people across the channels they actually use, automate
-						reminders that feel human, and track participation in real time—all seamlessly connected
-						to your community database.
+						Less admin and more connection – all seamlessly connected to your community database.
 					</p>
 					<div class="mt-8">
 						<a
@@ -70,9 +68,8 @@
 				Create gatherings that strengthen your community
 			</p>
 			<p class="mt-6 text-lg/8 text-gray-700">
-				Belcoda handles the logistics—signups, reminders, check-ins, timezone math—so you can focus
-				on the people you’re organizing with. Whether it’s five volunteers or five hundred
-				attendees, events stay smooth, personal, and connected to the rest of your work.
+				Belcoda handles the logistics—signups, reminders, check-ins—so you can focus on the people
+				you’re organizing with.
 			</p>
 		</div>
 		<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
@@ -81,198 +78,139 @@
 			>
 				<FeatureItem title="Event pages that feel inviting" icon="layout-dashboard">
 					Every event gets a clean, mobile-ready public page with the essentials upfront: what’s
-					happening, where, when, and how to join. Add rich descriptions, feature images, clear
-					location or meeting links, and capacity details that update in real time. One-click “Add
-					to Calendar” works everywhere and timezones are handled for you.
+					happening, where, when, and how to join.
 				</FeatureItem>
 				<FeatureItem title="WhatsApp built in" icon="message-circle-more">
-					Some communities live in their inbox. Others live on WhatsApp. Generate QR codes for
-					signup or check-in, capture consent automatically, and share context-rich WhatsApp links
-					anywhere. Belcoda keeps profiles updated whether people engage via web, QR, or chat.
+					Generate QR codes for signup or check-in, capture consent automatically, and share
+					context-rich WhatsApp links anywhere.
 				</FeatureItem>
 				<FeatureItem title="Automated but human" icon="bot-message-square">
-					Send confirmations and reminders that help people show up. Smart reminders follow event
-					timezones, cancellations notify everyone once, and every message respects contact
-					preferences—including “do not contact.” Choose preferred languages and channels per event.
+					Automatic confirmations and reminders notifications to make sure that people show up.
 				</FeatureItem>
 				<FeatureItem title="Attendance that fuels strategy" icon="users-round">
-					Follow signups as they happen, switch between simple and detailed attendee views, and
-					update post-event attendance to enrich each person’s engagement history. Exports are
-					flexible and spreadsheet-ready, while print mode and mobile tools make on-site
-					coordination easy.
+					Follow signups as they happen, and keep track of who showed up and who didn't for your
+					future organizing.
 				</FeatureItem>
 				<FeatureItem title="Connected to your database" icon="database">
 					Every signup updates your CRM intelligently: no duplicates, no overwriting, and full
-					activity history across confirmations, reminders, and attendance. Communication
-					preferences flow naturally from how people engage—email, WhatsApp, or both.
+					activity history across confirmations, reminders, and attendance.
 				</FeatureItem>
 				<FeatureItem title="A simple lifecycle" icon="workflow">
 					Work in draft until things are ready, publish with one click, and archive completed events
-					to keep your workspace tidy without losing data. Clear status labels and filters help you
-					stay organized even when you’re running dozens of events at once.
+					to keep your workspace tidy without losing data.
 				</FeatureItem>
 			</dl>
 		</div>
 	</div>
 </div>
 
-<!-- WhatsApp & Messaging -->
-<div class="bg-white pb-24 sm:pb-32">
-	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-		<div class="mx-auto grid max-w-2xl grid-cols-1 gap-16 lg:max-w-none lg:grid-cols-2">
-			<div class="lg:pr-12">
-				<h2 class="text-base/7 font-semibold text-indigo-600">WhatsApp built in</h2>
-				<p class="mt-2 text-3xl font-semibold tracking-tight text-pretty text-gray-900">
-					Meet people where they already organize
-				</p>
-				<p class="mt-6 text-lg/8 text-gray-600">
-					QR code signup opens WhatsApp with event details pre-filled, capturing consent as people
-					communicate. A separate QR code handles check-in—no clipboards, no manual tallying. Share
-					links anywhere and keep context intact so every conversation starts informed.
-				</p>
-				<ul class="mt-8 space-y-4 text-base/7 text-gray-700">
-					<li class="flex gap-3">
-						<span
-							class="mt-1 inline-flex size-6 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-600"
-							>1</span
-						>
-						<span>Generate QR codes for flyers, meetings, or chats with a single click.</span>
-					</li>
-					<li class="flex gap-3">
-						<span
-							class="mt-1 inline-flex size-6 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-600"
-							>2</span
-						>
-						<span
-							>Belcoda creates or updates profiles automatically, matching by email or phone.</span
-						>
-					</li>
-					<li class="flex gap-3">
-						<span
-							class="mt-1 inline-flex size-6 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-600"
-							>3</span
-						>
-						<span
-							>Contact preferences stay accurate so future outreach respects how people engage.</span
-						>
-					</li>
-				</ul>
-			</div>
-			<div class="lg:pl-12">
-				<h2 class="text-base/7 font-semibold text-indigo-600">Automated messages</h2>
-				<p class="mt-2 text-3xl font-semibold tracking-tight text-pretty text-gray-900">
-					Timely, respectful communication
-				</p>
-				<p class="mt-6 text-lg/8 text-gray-600">
-					Confirmations trigger instantly (if you want them) in each participant’s preferred
-					language. Smart reminders go out at the right moment—24 hours before, three days before, a
-					week before—based on the event’s timezone. Cancellations notify everyone once, cleanly,
-					without duplicates.
-				</p>
-				<p class="mt-4 text-base/7 text-gray-700">
-					Every message honors “do not contact” flags automatically, so your outreach stays
-					compliant and trusted. Preferred channels follow the event’s configuration, whether email,
-					WhatsApp, or both.
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Attendance & Data -->
-<div class="overflow-hidden bg-gray-50 py-24 sm:py-32">
+<!-- WhatsApp built in section-->
+<div class="overflow-hidden bg-white pt-12 pb-24 sm:pb-32">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div
-			class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center"
+			class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
 		>
-			<div class="lg:pr-12">
-				<h2 class="text-base/7 font-semibold text-indigo-600">Attendance that fuels strategy</h2>
-				<p class="mt-2 text-3xl font-semibold tracking-tight text-pretty text-gray-900">
-					Live insight before, during, and after events
-				</p>
-				<p class="mt-6 text-lg/8 text-gray-700">
-					Follow signups as they happen. Switch between simple and detailed attendee views. Update
-					attendance after the event to enrich each person’s engagement history and keep teams
-					aligned on who showed up.
-				</p>
-				<p class="mt-4 text-base/7 text-gray-600">
-					Exports are flexible and clean—choose the fields you want, including custom ones. Data is
-					spreadsheet-ready with no cleanup required, and print mode plus mobile management keep
-					on-site coordination easy.
-				</p>
-			</div>
-			<div class="lg:pl-12">
-				<h2 class="text-base/7 font-semibold text-indigo-600">
-					Connected to your community database
-				</h2>
-				<p class="mt-2 text-3xl font-semibold tracking-tight text-pretty text-gray-900">
-					The CRM that understands your events
-				</p>
-				<p class="mt-6 text-lg/8 text-gray-700">
-					Every signup updates your CRM intelligently—no duplicates, no overwriting. Existing data
-					stays intact unless someone adds something new, and full activity history (signups,
-					reminders, attendance) appears in each person’s timeline.
-				</p>
-				<p class="mt-4 text-base/7 text-gray-600">
-					Communication preferences flow naturally from how people engage, so you always know who
-					prefers email versus WhatsApp. Privacy and consent are first-class with verified contact
-					info and secure storage.
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
+			<div class="lg:ml-auto lg:pt-4 lg:pl-4">
+				<div class="lg:max-w-lg">
+					<h2 class="text-base/7 font-semibold text-indigo-600">WhatsApp built in</h2>
+					<p
+						class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl"
+					>
+						Meet people where they already organize
+					</p>
+					<p class="mt-6 text-lg/8 text-gray-600">
+						QR code signup opens WhatsApp with event details pre-filled, capturing consent as people
+						communicate. A separate QR code handles check-in—no clipboards, no manual tallying.
+					</p>
+					<dl class="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+						<div class="relative pl-9">
+							<dt class="inline font-semibold text-gray-900">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="20px"
+									height="20px"
+									class="absolute top-1 left-1 size-5 text-indigo-600"
+									viewBox="0 0 24 24"
+									><path fill="currentColor" d="M1 1h10v10H1zm2 2v6h6V3z" /><path
+										fill="currentColor"
+										fill-rule="evenodd"
+										d="M5 5h2v2H5z"
+									/><path fill="currentColor" d="M13 1h10v10H13zm2 2v6h6V3z" /><path
+										fill="currentColor"
+										fill-rule="evenodd"
+										d="M17 5h2v2h-2z"
+									/><path fill="currentColor" d="M1 13h10v10H1zm2 2v6h6v-6z" /><path
+										fill="currentColor"
+										fill-rule="evenodd"
+										d="M5 17h2v2H5z"
+									/><path
+										fill="currentColor"
+										d="M23 19h-4v4h-6V13h1h-1v6h2v2h2v-6h-2v-2h-1h3v2h2v2h2v-4h2zm0 2v2h-2v-2z"
+									/></svg
+								>
 
-<!-- Lifecycle & Flexibility -->
-<div class="bg-white py-24 sm:py-32">
-	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-		<div class="mx-auto max-w-4xl lg:max-w-none">
-			<div class="grid gap-16 lg:grid-cols-2">
-				<div>
-					<h2 class="text-base/7 font-semibold text-indigo-600">
-						Built for organizers, not IT teams
-					</h2>
-					<p class="mt-2 text-3xl font-semibold tracking-tight text-pretty text-gray-900">
-						Customize every event without slowing down
-					</p>
-					<p class="mt-6 text-lg/8 text-gray-700">
-						Custom fields capture exactly what each event needs—from dietary preferences and skill
-						levels to accessibility requirements. Capacity controls keep headcounts precise,
-						timezone options display or hide as needed, and preferred channels tailor communications
-						per event.
-					</p>
-					<p class="mt-4 text-base/7 text-gray-600">
-						Everything flexes to how your community actually operates, so configuration stays simple
-						even while your needs evolve.
-					</p>
+								QR code signup:
+							</dt>
+							<dd class="inline">
+								Generate QR codes for flyers, meetings, or chats with a single click.
+							</dd>
+						</div>
+						<div class="relative pl-9">
+							<dt class="inline font-semibold text-gray-900">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="20px"
+									height="20px"
+									class="absolute top-1 left-1 size-5 text-indigo-600"
+									viewBox="0 0 48 48"
+									><path
+										fill="currentColor"
+										fill-rule="evenodd"
+										d="M21.493 20.43c1.362-4.994 2.731-10.015 3.848-15.077c.244-1.106-.021-2.46-1.315-2.941q-.333-.125-.761-.24c-.428-.116-.545-.133-.78-.173c-1.36-.23-2.266.81-2.608 1.89c-1.57 4.961-2.9 10.014-4.222 15.04l-.02.073q.11-.003.219-.002c2.143 0 4.03.529 5.639 1.43M27 28a2 2 0 0 1 2-2h10a2 2 0 1 1 0 4H29a2 2 0 0 1-2-2m5 6a2 2 0 1 0 0 4h10a2 2 0 1 0 0-4zm3 8a2 2 0 1 0 0 4h10a2 2 0 1 0 0-4zM15.854 21.5c-6.044 0-10.64 4.527-12.119 10.068c-.885 3.32-1.764 7.237-2.096 10.722c-.223 2.343 1.512 4.274 3.736 4.534c1.042.122 2.348.259 3.809.377c-1.705-3.667-1.818-7.556-1.602-9.377a1.5 1.5 0 0 1 2.979.352c-.204 1.726-.004 5.909 2.164 9.249c1.07.047 2.172.075 3.275.075c1.1 0 2.254-.028 3.412-.075c-1.139-1.627-1.822-3.393-2.234-4.905a20 20 0 0 1-.592-3.16a17 17 0 0 1-.084-1.243l-.002-.08V38a1.501 1.501 0 0 1 3-.002v.052l.008.202c.009.182.026.454.062.795c.072.684.216 1.633.502 2.683c.513 1.882 1.447 3.959 3.116 5.486c.848-.058 1.668-.12 2.437-.185c3.54-.292 4.951-4.549 2.481-6.973L27 38.973a5.5 5.5 0 0 1-1.647-4.051l.057-2.57c.121-5.481-3.587-10.852-9.556-10.852"
+										clip-rule="evenodd"
+									/></svg
+								>
+
+								Clean data:
+							</dt>
+							<dd class="inline">
+								Belcoda creates or updates profiles automatically, matching by email or phone.
+							</dd>
+						</div>
+						<div class="relative pl-9">
+							<dt class="inline font-semibold text-gray-900">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="absolute top-1 left-1 size-5 text-indigo-600"
+									width="20px"
+									height="20px"
+									viewBox="0 0 24 24"
+									><g fill="none"
+										><path
+											d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"
+										/><path
+											fill="currentColor"
+											d="M7 3v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V3h1a2 2 0 0 1 2 2v11a6 6 0 0 1-6 6H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm5 11H9a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2m3-4H9a1 1 0 0 0-.117 1.993L9 12h6a1 1 0 1 0 0-2m-1-8a1 1 0 0 1 .117 1.993L14 4h-4a1 1 0 0 1-.117-1.993L10 2z"
+										/></g
+									></svg
+								>
+
+								Attendance management:
+							</dt>
+							<dd class="inline">
+								Display check-in QR codes at the event to let attendees mark themselves present.
+							</dd>
+						</div>
+					</dl>
 				</div>
-				<div>
-					<h2 class="text-base/7 font-semibold text-indigo-600">
-						Fast, reliable, and mobile-first
-					</h2>
-					<p class="mt-2 text-3xl font-semibold tracking-tight text-pretty text-gray-900">
-						Real-time sync with trusted delivery
-					</p>
-					<p class="mt-6 text-lg/8 text-gray-700">
-						Belcoda uses real-time sync so signups and changes appear instantly. Emails ride on a
-						dependable infrastructure, and public pages plus admin tools work beautifully on phones—
-						because that’s where most people are when they decide to attend.
-					</p>
-					<p class="mt-4 text-base/7 text-gray-600">
-						Privacy and consent stay front and center with verified emails and numbers, clear
-						contact preferences, and all data stored securely in your community database.
-					</p>
-				</div>
+				<p class="mt-6 text-lg/8 text-gray-600">
+					Share links anywhere and keep context intact so every conversation starts informed.
+				</p>
 			</div>
-		</div>
-		<div class="mx-auto mt-20 max-w-3xl text-center">
-			<p class="text-2xl font-semibold tracking-tight text-gray-900">
-				Simple to start. Powerful when you need it.
-			</p>
-			<p class="mt-4 text-lg/8 text-gray-700">
-				Belcoda handles the logistics so you can focus on the people you’re organizing with. From
-				draft to archive, every event stays connected to your broader organizing strategy.
-			</p>
+
+			<div class="flex items-start justify-end lg:order-first">
+				<img src={ScreenMobileOneImage} alt="Product screenshot" class="mx-auto w-96 lg:w-xs" />
+			</div>
 		</div>
 	</div>
 </div>

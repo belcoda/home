@@ -2,11 +2,11 @@
 	import Header from '$lib/comps/nav/Header.svelte';
 	import Footer from '$lib/comps/nav/Footer.svelte';
 	import Badge from '$lib/comps/widgets/Badge.svelte';
-	import imageOrganizing from './belocoda-features-organizing.png';
+	import imageOrganizing from '$lib/comps/content/assets/browser-mockup-community.webp';
 	import FeatureItem from '$lib/comps/content/FeatureItem.svelte';
 	import CTA1 from '$lib/comps/content/CTA1.svelte';
 	import imageAsmaa from '$lib/assets/avatars/asmaa.jpg';
-	import ScreenMobileOneImage from './screen-mobile-2.png';
+	import ScreenMobileOneImage from '$lib/comps/content/assets/phone-mockup.webp';
 </script>
 
 <Header />
@@ -19,7 +19,7 @@
 				<div class="mt-12 lg:max-w-lg">
 					<div class="mb-4"><Badge>Organizing</Badge></div>
 					<p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">
-						Your community. At your fingertips.
+						Your community — at your fingertips.
 					</p>
 					<p class="mt-6 text-lg/8 text-gray-300">
 						All your organization’s data, all in one place. Boost your efficiency and unlock new
@@ -52,7 +52,7 @@
 			<img
 				src={imageOrganizing}
 				alt="Screenshot of the Organizing feature"
-				class="w-3xl max-w-none rounded-xl sm:w-228 md:-ml-4 lg:ml-0"
+				class="w-3xl max-w-none rounded-xl sm:w-228 md:-ml-4 lg:mt-12 lg:ml-0"
 			/>
 		</div>
 	</div>
@@ -149,18 +149,17 @@
 						<div class="relative pl-9">
 							<dt class="inline font-semibold text-gray-900">
 								<svg
-									viewBox="0 0 20 20"
-									fill="currentColor"
-									data-slot="icon"
-									aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									width="20px"
+									height="20px"
 									class="absolute top-1 left-1 size-5 text-indigo-600"
+									viewBox="0 0 24 24"
+									><path
+										fill="currentColor"
+										d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5Zm0 3.9a3 3 0 1 1-3 3a3 3 0 0 1 3-3m0 7.9c2 0 6 1.09 6 3.08a7.2 7.2 0 0 1-12 0c0-1.99 4-3.08 6-3.08"
+									/></svg
 								>
-									<path
-										d="M5.5 17a4.5 4.5 0 0 1-1.44-8.765 4.5 4.5 0 0 1 8.302-3.046 3.5 3.5 0 0 1 4.504 4.272A4 4 0 0 1 15 17H5.5Zm3.75-2.75a.75.75 0 0 0 1.5 0V9.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z"
-										clip-rule="evenodd"
-										fill-rule="evenodd"
-									/>
-								</svg>
+
 								Admins:
 							</dt>
 							<dd class="inline">Full management access to the organization and all its teams</dd>
@@ -168,18 +167,17 @@
 						<div class="relative pl-9">
 							<dt class="inline font-semibold text-gray-900">
 								<svg
-									viewBox="0 0 20 20"
-									fill="currentColor"
-									data-slot="icon"
-									aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									width="20px"
+									height="20px"
 									class="absolute top-1 left-1 size-5 text-indigo-600"
+									viewBox="0 0 24 24"
+									><path
+										fill="currentColor"
+										d="M1 17.2q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2v.8q0 .825-.587 1.413T15 20H3q-.825 0-1.412-.587T1 18zM18.45 20q.275-.45.413-.962T19 18v-1q0-1.1-.612-2.113T16.65 13.15q1.275.15 2.4.513t2.1.887q.9.5 1.375 1.112T23 17v1q0 .825-.587 1.413T21 20zM9 12q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m10-4q0 1.65-1.175 2.825T15 12q-.275 0-.7-.062t-.7-.138q.675-.8 1.038-1.775T15 8t-.362-2.025T13.6 4.2q.35-.125.7-.163T15 4q1.65 0 2.825 1.175T19 8"
+									/></svg
 								>
-									<path
-										d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z"
-										clip-rule="evenodd"
-										fill-rule="evenodd"
-									/>
-								</svg>
+
 								Teams & Team Leaders:
 							</dt>
 							<dd class="inline">
@@ -189,22 +187,19 @@
 						<div class="relative pl-9">
 							<dt class="inline font-semibold text-gray-900">
 								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="20px"
+									height="20px"
 									viewBox="0 0 20 20"
-									fill="currentColor"
-									data-slot="icon"
-									aria-hidden="true"
 									class="absolute top-1 left-1 size-5 text-indigo-600"
-								>
-									<path
-										d="M4.632 3.533A2 2 0 0 1 6.577 2h6.846a2 2 0 0 1 1.945 1.533l1.976 8.234A3.489 3.489 0 0 0 16 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234Z"
-									/>
-									<path
-										d="M4 13a2 2 0 1 0 0 4h12a2 2 0 1 0 0-4H4Zm11.24 2a.75.75 0 0 1 .75-.75H16a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V15Zm-2.25-.75a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75h-.01Z"
-										clip-rule="evenodd"
+									><path
+										fill="currentColor"
 										fill-rule="evenodd"
-									/>
-								</svg>
-								Points people:
+										d="M9 3a1 1 0 0 1 2 0v5.5a.5.5 0 0 0 1 0V4a1 1 0 1 1 2 0v4.5a.5.5 0 0 0 1 0V6a1 1 0 1 1 2 0v5a7 7 0 1 1-14 0V9a1 1 0 0 1 2 0v2.5a.5.5 0 0 0 1 0V4a1 1 0 0 1 2 0v4.5a.5.5 0 0 0 1 0z"
+										clip-rule="evenodd"
+									/></svg
+								>
+								Point people:
 							</dt>
 							<dd class="inline">
 								Manage relationships for assigned community members without admin privileges.
@@ -219,11 +214,7 @@
 			</div>
 
 			<div class="flex items-start justify-end lg:order-first">
-				<img
-					src={ScreenMobileOneImage}
-					alt="Product screenshot"
-					class="mx-auto w-md lg:-mt-12 lg:w-lg"
-				/>
+				<img src={ScreenMobileOneImage} alt="Product screenshot" class="mx-auto w-96 lg:w-xs" />
 			</div>
 		</div>
 	</div>
