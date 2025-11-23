@@ -25,6 +25,7 @@ export const tiers = [
 	{
 		name: 'Institution',
 		price: 279,
+		priceAnnual: 2799,
 		description: 'For well-established organizations & campaigns',
 		interval: 'admin',
 		features: [
@@ -64,4 +65,4 @@ export const tiers = [
 			}
 		]
 	}
-];
+] as const;

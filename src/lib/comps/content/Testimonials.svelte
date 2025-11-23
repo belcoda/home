@@ -1,5 +1,7 @@
 <script lang="ts">
-	import Badge from '$lib/comps/widgets/Badge.svelte';
+	import imageAsmaa from '$lib/assets/avatars/asmaa.jpg';
+	import imageArnold from '$lib/assets/avatars/arnold.webp';
+	import imageEmmanuel from '$lib/assets/avatars/emmanuel.webp';
 </script>
 
 <div class="relative isolate bg-gray-50 pt-24 pb-32 sm:pt-32">
@@ -31,7 +33,7 @@
 				</span>
 			</div>
 			<p class="mt-2 text-4xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-5xl">
-				Organizers love Belcoda
+				Loved by organizers all over the world
 			</p>
 		</div>
 		<div
@@ -73,38 +75,27 @@
 					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
-								“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut
-								enim doloremque et ipsam.”
+								“Belcoda helps us manage programs and engage communities. It makes collaboration
+								much easier.”
 							</p>
 						</blockquote>
 						<figcaption class="mt-6 flex items-center gap-x-4">
-							<img
-								src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-								alt=""
-								class="size-10 rounded-full bg-gray-50"
-							/>
+							<img src={imageArnold} alt="Arnold Osano" class="size-10 rounded-full bg-gray-50" />
 							<div>
-								<div class="font-semibold text-gray-900">Leslie Alexander</div>
-								<div class="text-gray-600">@lesliealexander</div>
+								<div class="font-semibold text-gray-900">Arnold Osano</div>
+								<div class="text-gray-600">WeCare Youth</div>
 							</div>
 						</figcaption>
 					</figure>
 					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
-							<p>
-								“Quia dolorem qui et. Atque quo aliquid sit eos officia. Dolores similique
-								laboriosam quaerat cupiditate.”
-							</p>
+							<p>“Belcoda is more than just a tool – it's a partner in action.”</p>
 						</blockquote>
 						<figcaption class="mt-6 flex items-center gap-x-4">
-							<img
-								src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-								alt=""
-								class="size-10 rounded-full bg-gray-50"
-							/>
+							<img src={imageAsmaa} alt="Asmaa Hanafi" class="size-10 rounded-full bg-gray-50" />
 							<div>
-								<div class="font-semibold text-gray-900">Michael Foster</div>
-								<div class="text-gray-600">@michaelfoster</div>
+								<div class="font-semibold text-gray-900">Asmaa Hanafi</div>
+								<div class="text-gray-600">Green Society</div>
 							</div>
 						</figcaption>
 					</figure>
@@ -132,19 +123,19 @@
 					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
-								“Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae ipsam ut
-								officia rem nulla blanditiis.”
+								“The app is free and easy to use, you just click that you're organizing an event or
+								sharing messages, and everything runs exactly the way you wanted.”
 							</p>
 						</blockquote>
 						<figcaption class="mt-6 flex items-center gap-x-4">
 							<img
-								src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-								alt=""
+								src={imageEmmanuel}
+								alt="Emmanuel Ng’olepus"
 								class="size-10 rounded-full bg-gray-50"
 							/>
 							<div>
-								<div class="font-semibold text-gray-900">Lindsay Walton</div>
-								<div class="text-gray-600">@lindsaywalton</div>
+								<div class="font-semibold text-gray-900">Emmanuel Ng’olepus</div>
+								<div class="text-gray-600">Pads4Education</div>
 							</div>
 						</figcaption>
 					</figure>

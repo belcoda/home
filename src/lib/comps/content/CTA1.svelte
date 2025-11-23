@@ -2,6 +2,7 @@
 	const backgroundImage = '/background-auth.jpg';
 	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
 	import imageCTA from './assets/belocoda-features-organizing.png';
+	import laptopMockup from './assets/mockup-browser.png';
 </script>
 
 <div
@@ -35,7 +36,7 @@
 				<img
 					width="2432"
 					height="1442"
-					src={imageCTA}
+					src={laptopMockup}
 					alt="App screenshot"
 					class="mb-[-40%] rounded-xl"
 				/>

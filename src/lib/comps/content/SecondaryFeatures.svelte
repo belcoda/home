@@ -119,9 +119,16 @@
 					class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]"
 				>
 					<div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
-						<p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-							Integrations
-						</p>
+						<div
+							class="mt-2 flex items-center gap-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
+						>
+							<p>Integrations</p>
+							<div
+								class="rounded-full border border-yellow-200 bg-yellow-100 px-2 py-0.5 text-xs text-yellow-800"
+							>
+								Coming soon!
+							</div>
+						</div>
 						<p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
 							Not yet ready to ditch your existing platforms? Use Belcoda as an alternative (better)
 							front-end that keeps all your data synced.
