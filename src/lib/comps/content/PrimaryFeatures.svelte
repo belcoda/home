@@ -16,6 +16,15 @@
 	const screenshotReporting = '/screenshots/reporting.png';
 	const screenshotVatReturns = '/screenshots/vat-returns.png';
 
+	import CommunityImg from '$lib/comps/content/assets/mockup-browser-small.webp';
+
+	const images = {
+		Community: CommunityImg,
+		Communications: CommunityImg,
+		Events: CommunityImg,
+		Action: CommunityImg
+	};
+
 	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
 
 	const features = [
@@ -28,7 +37,7 @@
 		{
 			title: 'Communications',
 			description:
-				'Go where your people are. WhatsApp-first communications tools, including interactive messages and actions via WhatsApp.',
+				'WhatsApp-first communications tools, including interactive messages and actions via WhatsApp.',
 			image: screenshotExpenses
 		},
 		{
@@ -36,12 +45,12 @@
 			description:
 				'A best-in-class events management toolkit. Organize, recruit for, and run events with flexible and powerful tools.',
 			image: screenshotVatReturns
-		},
-		{
+		}
+		/* {
 			title: 'Action',
 			description: `Roll out petitions, surveys, and contact campaigns targeting your community's local elected officials.`,
 			image: screenshotReporting
-		}
+		} */
 	];
 
 	let tabOrientation = 'horizontal';
@@ -97,7 +106,7 @@
 			{@render whatsnew()}
 			<div class="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
 				<h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-6xl">
-					Software for organizers who want to win.
+					Software for a new generation of organizing.
 				</h2>
 				<p class="mt-6 text-lg font-medium text-pretty text-blue-50 sm:text-2xl">
 					Building powerful distributed communities — from zero to victory.
@@ -182,19 +191,19 @@
 					>
 						<div class="relative sm:px-6 lg:hidden">
 							<div
-								class="absolute -inset-x-4 -top-26 -bottom-17 bg-white/10 ring-1 ring-white/10 ring-inset sm:inset-x-0 sm:rounded-t-xl"
+								class="absolute -inset-x-4 -top-26 -bottom-17 sm:inset-x-0 sm:rounded-t-xl lg:bg-white/10 lg:ring-1 lg:ring-white/10 lg:ring-inset"
 							></div>
 							<p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">
 								{feature.description}
 							</p>
 						</div>
 						<div
-							class="mt-10 w-180 overflow-hidden rounded-b-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-271.25 lg:rounded-t-xl"
+							class="mt-10 w-180 overflow-hidden rounded-md bg-slate-50 shadow-xl ring shadow-blue-900/20 ring-slate-200 sm:w-auto lg:mt-0 lg:w-271.25 lg:rounded-t-md"
 						>
 							<img
 								class="w-full"
-								src={feature.image}
-								alt=""
+								src={images[feature.title as keyof typeof images]}
+								alt="{feature.title} screenshot"
 								loading="eager"
 								width="800"
 								height="600"

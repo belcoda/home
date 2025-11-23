@@ -3,6 +3,7 @@
 	import WorksEverywhere from '$lib/comps/content/featuregrid/WorksEverywhere.svelte';
 	import Code from '$lib/comps/content/featuregrid/Code.svelte';
 
+	import phoneMockupImg from '$lib/comps/content/assets/phone-mockup.webp';
 	import imageGlobeSliceHires from './assets/globe-slice-hires.png';
 	import securityTailwindPlus from './assets/security-tailwindplus.png';
 </script>
@@ -25,12 +26,10 @@
 						</p>
 					</div>
 					<div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
-						<div
-							class="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl"
-						>
+						<div class="overflow-hiddenshadow-2xl absolute inset-x-10 top-10 bottom-0">
 							<img
-								src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png"
-								alt=""
+								src={phoneMockupImg}
+								alt="Belcoda on mobile"
 								class="size-full object-cover object-top"
 							/>
 						</div>

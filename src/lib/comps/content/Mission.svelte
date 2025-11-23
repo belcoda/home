@@ -15,7 +15,7 @@
 				>
 			</div>
 			<h1 class="mt-4 text-4xl font-extrabold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-				A new generation of distributed organizing
+				For organizers with a plan to win.
 			</h1>
 			<p class="mt-6 text-xl/8 text-balance text-gray-700">
 				Modern campaigns win by building and mobilizing large, decentralized communities. Not
@@ -82,6 +82,9 @@
 				<p class="mt-4 text-base/7 text-gray-600">
 					You can create interactive action threads, send individual messages, and even allow people
 					to sign up to events via WhatsApp and WhatsApp QR codes.
+				</p>
+				<p class="mt-4 text-base/7 text-gray-600">
+					We're adding new WhatsApp features all the time.
 				</p>
 			</div>
 		</section>
