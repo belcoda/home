@@ -1,38 +1,38 @@
 <script lang="ts">
 	const faqs = $state([
 		{
-			title: `What is Belcoda?`,
-			answer: `Belcoda is a platform for organizing events and communities.`,
+			title: `What are contacts and teams?`,
+			answer: `A contact is the record of a person in your organization. Every contact has a name, and other information like email address, phone number, address, and more. Teams are groups of contacts, which can be created and organized any way you want.`,
 			open: true
 		},
 		{
-			title: `What's the best thing about Switzerland?`,
-			answer: `I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.`,
+			title: `What is the difference between a user and an admin?`,
+			answer: `A user is anyone who can sign into your Belcoda organization. By default, users only have permissions to access and modify contacts, teams, and other information which is assigned to them. Admins are users who have admin permissions, which means they can access and modify everything in the organization.`,
 			open: false
 		},
 		{
-			title: `How do you make holy water?`,
-			answer: `You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut tempora vitae odio inventore fuga aliquam nostrum quod porro. Delectus quia facere id sequi expedita natus.`,
+			title: `Can I change plans later?`,
+			answer: `Yes, you can change your organization’s plan at any time using the billing page in your organization’s settings. You can also downgrade to the free plan at any time, too.`,
 			open: false
 		},
 		{
-			title: `What do you call someone with no body and no nose?`,
-			answer: `Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.`,
+			title: `Can I create multiple Belcoda organizations?`,
+			answer: `Yes! And you can be logged into multiple organizations at once, and switch between them, too. If you want to set up a network of multiple organizations, get in touch to talk about our Network plan.`,
 			open: false
 		},
 		{
-			title: `Why do you never see elephants hiding in trees?`,
-			answer: `Because they're so good at it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.`,
+			title: `Do you have any supported or discounted plans?`,
+			answer: `We run the Belcoda Foundation, which provides supported access to selected grassroots and locally led community initiatives to access non-free features of Belcoda in partnership with philanthropy. For more details, check out the Belcoda Foundation.`,
 			open: false
 		},
 		{
-			title: `Why can't you hear a pterodactyl go to the bathroom?`,
-			answer: `Because the pee is silent. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, quas voluptatibus ex culpa ipsum, aspernatur blanditiis fugiat ullam magnam suscipit deserunt illum natus facilis atque vero consequatur! Quisquam, debitis error.`,
+			title: `Do you own the data I put into Belcoda?`,
+			answer: `No. You keep ownership of all data you put into Belcoda. We only use it to provide you with our services. In GDPR terms, we are a Data Processor on your behalf, you always remain the Data Controller. For more information, check out our Privacy Policy and Security Center.`,
 			open: false
 		},
 		{
-			title: `Why did the invisible man turn down the job offer?`,
-			answer: `He couldn't see himself doing it. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet perspiciatis officiis corrupti tenetur. Temporibus ut voluptatibus, perferendis sed unde rerum deserunt eius.`,
+			title: `Can I export my data any time?`,
+			answer: `Yes, you can export all your data to CSV format at any time.`,
 			open: false
 		}
 	]);
