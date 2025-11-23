@@ -1,19 +1,19 @@
 <script lang="ts">
 	type Props = {
-		variant?: 'default' | 'transparent';
+		variant?: 'opaque' | 'transparent';
 	};
-	const { variant = 'default' }: Props = $props();
-	const backgroundImage = variant === 'transparent' ? null : '/background-auth.jpg';
+	const { variant = 'transparent' }: Props = $props();
+	const backgroundImage =
+		variant === 'transparent'
+			? 'background-image: none'
+			: 'background-image: url("/background-auth.jpg")';
 	import Features from './flyouts/Features.svelte';
 	import Resources from './flyouts/Resources.svelte';
 
 	import MobileMenu from '$lib/comps/nav/MobileMenu.svelte';
 </script>
 
-<header
-	class="absolute top-0 right-0 left-0 z-50 bg-cover bg-center"
-	style={backgroundImage ? `background-image: url('{backgroundImage}')` : ''}
->
+<header class="absolute top-0 right-0 left-0 z-50 bg-cover bg-center" style={backgroundImage}>
 	<nav
 		aria-label="Global"
 		class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8"
