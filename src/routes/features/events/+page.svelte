@@ -5,7 +5,7 @@
 	import FeatureItem from '$lib/comps/content/FeatureItem.svelte';
 	import CTA1 from '$lib/comps/content/CTA1.svelte';
 	import heroImage from '$lib/comps/content/assets/belocoda-features-organizing.png';
-	import imageAsmaa from './asmaa.jpg';
+	import imageAsmaa from '$lib/assets/avatars/asmaa.jpg';
 </script>
 
 <Header />

@@ -5,7 +5,8 @@
 	import imageOrganizing from './belocoda-features-organizing.png';
 	import FeatureItem from '$lib/comps/content/FeatureItem.svelte';
 	import CTA1 from '$lib/comps/content/CTA1.svelte';
-	import imageAsmaa from './asmaa.jpg';
+	import imageAsmaa from '$lib/assets/avatars/asmaa.jpg';
+	import ScreenMobileOneImage from './screen-mobile-2.png';
 </script>
 
 <Header />
@@ -219,11 +220,9 @@
 
 			<div class="flex items-start justify-end lg:order-first">
 				<img
-					width="2432"
-					height="1442"
-					src={imageOrganizing}
+					src={ScreenMobileOneImage}
 					alt="Product screenshot"
-					class="w-3xl max-w-none rounded-xl sm:w-228"
+					class="mx-auto w-md lg:-mt-12 lg:w-lg"
 				/>
 			</div>
 		</div>
