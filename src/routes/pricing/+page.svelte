@@ -7,7 +7,280 @@
 	import PricingGridItem from './PricingGridItem.svelte';
 	let paymentSchedule: 'monthly' | 'annual' = $state('monthly');
 	import { tiers } from '$lib/comps/content/pricing';
+
+	type FeatureValue = boolean | number | 'Unlimited' | '$1.20' | '~$0.25' | 'Rate card';
+
+	interface Feature {
+		name: string;
+		mobileName?: string; // Optional mobile-specific name (for starter tier)
+		starter: FeatureValue;
+		scale: FeatureValue;
+		growth: FeatureValue;
+	}
+
+	interface FeatureCategory {
+		name: string;
+		features: Feature[];
+	}
+
+	const comparisonData: FeatureCategory[] = [
+		{
+			name: 'Organizing',
+			features: [
+				{
+					name: 'Edge content delivery',
+					mobileName: 'Edge content self-delivery',
+					starter: true,
+					scale: true,
+					growth: true
+				},
+				{ name: 'Custom domains', starter: 1, scale: 'Unlimited', growth: 3 },
+				{ name: 'Team members', starter: 3, scale: 'Unlimited', growth: 20 },
+				{ name: 'Single sign-on (SSOasasa)', starter: false, scale: true, growth: false }
+			]
+		},
+		{
+			name: 'Email',
+			features: [
+				{
+					name: 'Email price (per 1000 emails)',
+					starter: '$1.20',
+					scale: '$1.20',
+					growth: '~$0.25'
+				},
+				{ name: 'Included emails', starter: 100, scale: 15000, growth: 100000 },
+				{
+					name: 'Email send signatures',
+					starter: 'Unlimited',
+					scale: 'Unlimited',
+					growth: 'Unlimited'
+				},
+				{ name: 'Custom email templates', starter: false, scale: true, growth: true }
+			]
+		},
+		{
+			name: 'WhatsApp',
+			features: [
+				{
+					name: 'WhatsApp interactive threads',
+					starter: false,
+					scale: 'Unlimited',
+					growth: 'Unlimited'
+				},
+				{
+					name: 'WhatsApp price (per message)',
+					starter: false,
+					scale: 'Rate card',
+					growth: 'Rate card'
+				},
+				{ name: 'WhatsApp templates', starter: false, scale: 'Unlimited', growth: 'Unlimited' },
+				{ name: 'Custom WhatsApp system messages', starter: false, scale: false, growth: true }
+			]
+		},
+		{
+			name: 'Events',
+			features: [
+				{
+					name: 'Events & event pages',
+					starter: 'Unlimited',
+					scale: 'Unlimited',
+					growth: 'Unlimited'
+				},
+				{ name: 'Custom event page templates', starter: false, scale: true, growth: true },
+				{ name: 'Custom event email templates', starter: false, scale: true, growth: true },
+				{ name: 'Email event reminders', starter: true, scale: true, growth: true },
+				{ name: 'WhatsApp event reminders', starter: false, scale: false, growth: true },
+				{ name: 'Sign up via WhatsApp', starter: true, scale: true, growth: true }
+			]
+		},
+		{
+			name: 'Infrastructure',
+			features: [
+				{ name: 'Desktop app', starter: true, scale: true, growth: true },
+				{ name: 'Dedicated infrastructure', starter: false, scale: false, growth: true },
+				{ name: 'Single sign-on (SSO)', starter: false, scale: false, growth: true },
+				{ name: 'Audit logs', starter: false, scale: false, growth: true },
+				{ name: 'Multi-organization network', starter: false, scale: false, growth: true },
+				{ name: 'REST API', starter: true, scale: true, growth: true },
+				{ name: 'Webhooks', starter: true, scale: true, growth: true },
+				{ name: 'Integrations', starter: true, scale: true, growth: true },
+				{ name: 'Direct SQL access (read only)', starter: false, scale: false, growth: true }
+			]
+		},
+		{
+			name: 'Support',
+			features: [
+				{ name: 'Community support', starter: true, scale: true, growth: true },
+				{ name: 'Workshops & masterclasses', starter: true, scale: true, growth: true },
+				{ name: 'Chat and email support', starter: false, scale: true, growth: true },
+				{ name: 'Dedicated support engineer', starter: false, scale: false, growth: true },
+				{ name: 'White-glove onboarding', starter: false, scale: false, growth: true }
+			]
+		}
+	];
+
+	const tierInfo = [
+		{ name: tiers[0].name, description: 'Everything you need to get started.' },
+		{ name: tiers[1].name, description: 'Added flexibility at scale.' },
+		{ name: tiers[2].name, description: 'All the extras for your growing team.' }
+	];
+
+	function getFeatureValue(
+		value: FeatureValue,
+		tierIndex: number,
+		isFeatured: boolean
+	): {
+		type: 'yes' | 'no' | 'number' | 'unlimited';
+		display: string;
+	} {
+		if (value === true) {
+			return { type: 'yes', display: 'Yes' };
+		}
+		if (value === false) {
+			return { type: 'no', display: 'No' };
+		}
+		if (value === 'Unlimited') {
+			return { type: 'unlimited', display: 'Unlimited' };
+		}
+		return { type: 'number', display: String(value) };
+	}
 </script>
+
+{#snippet checkIcon()}
+	<svg
+		viewBox="0 0 20 20"
+		fill="currentColor"
+		data-slot="icon"
+		aria-hidden="true"
+		class="mx-auto size-5 text-blue-800"
+	>
+		<path
+			d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+			clip-rule="evenodd"
+			fill-rule="evenodd"
+		/>
+	</svg>
+	<span class="sr-only">Yes</span>
+{/snippet}
+
+{#snippet xIcon()}
+	<svg
+		viewBox="0 0 20 20"
+		fill="currentColor"
+		data-slot="icon"
+		aria-hidden="true"
+		class="mx-auto size-5 text-gray-400"
+	>
+		<path
+			d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
+		/>
+	</svg>
+	<span class="sr-only">No</span>
+{/snippet}
+
+{#snippet featureValue(value: FeatureValue, isFeatured: boolean = false, isScale: boolean = false)}
+	{#if value === true}
+		{@render checkIcon()}
+	{:else if value === false}
+		{@render xIcon()}
+	{:else if value === 'Unlimited'}
+		<span class="text-sm/6 {isScale ? 'font-semibold text-blue-800' : 'text-gray-900'}"
+			>Unlimited</span
+		>
+	{:else if value === 'Rate card'}
+		<a
+			href="https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing"
+			target="_blank"
+			class="text-sm/6 text-blue-700 hover:text-blue-800 hover:underline">Rate card</a
+		>
+	{:else}
+		<span class="text-sm/6 text-gray-900">{value}</span>
+	{/if}
+{/snippet}
+
+{#snippet mobileFeatureRow(
+	feature: Feature,
+	tierValue: FeatureValue,
+	isFeatured: boolean,
+	isScale: boolean = false,
+	tierIndex: number = 0
+)}
+	<div class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0">
+		<dt class="pr-4 text-gray-600">
+			{tierIndex === 0 && feature.mobileName ? feature.mobileName : feature.name}
+		</dt>
+		<dd class="flex items-center justify-end sm:justify-center sm:px-4">
+			{@render featureValue(tierValue, isFeatured, isScale)}
+		</dd>
+	</div>
+{/snippet}
+
+{#snippet desktopFeatureRow(feature: Feature, isLast: boolean)}
+	<tr>
+		<th scope="row" class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900">
+			{feature.name}
+			{#if !isLast}
+				<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
+			{/if}
+		</th>
+		<td class="relative w-1/4 px-4 py-0 text-center">
+			<span class="relative size-full py-3">
+				{@render featureValue(feature.starter)}
+			</span>
+		</td>
+		<td class="relative w-1/4 px-4 py-0 text-center">
+			<span class="relative size-full py-3">
+				{@render featureValue(feature.scale, false, true)}
+			</span>
+		</td>
+		<td class="relative w-1/4 px-4 py-0 text-center">
+			<span class="relative size-full py-3">
+				{@render featureValue(feature.growth)}
+			</span>
+		</td>
+	</tr>
+{/snippet}
+
+{#snippet mobileCategorySection(category: FeatureCategory, tierIndex: number, isFeatured: boolean)}
+	<div>
+		<h4 class="text-sm/6 font-semibold text-gray-900">
+			{category.name === 'Features' && tierIndex === 0 ? 'Core' : category.name}
+		</h4>
+		<div class="relative mt-6">
+			<!-- Fake card background -->
+			<div
+				aria-hidden="true"
+				class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
+			></div>
+
+			<div
+				class="relative rounded-lg bg-white shadow-xs {isFeatured
+					? 'ring-2 ring-blue-800'
+					: 'ring-1 ring-gray-900/10'} sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
+			>
+				<dl class="divide-y divide-gray-200 text-sm/6">
+					{#each category.features as feature}
+						{@render mobileFeatureRow(
+							feature,
+							tierIndex === 0 ? feature.starter : tierIndex === 1 ? feature.scale : feature.growth,
+							isFeatured,
+							tierIndex === 1,
+							tierIndex
+						)}
+					{/each}
+				</dl>
+			</div>
+
+			<!-- Fake card border -->
+			<div
+				aria-hidden="true"
+				class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg {isFeatured
+					? 'ring-2 ring-blue-800'
+					: 'ring-1 ring-gray-900/10'} sm:block"
+			></div>
+		</div>
+	</div>
+{/snippet}
 
 <svelte:head>
 	<title>Pricing | Belcoda</title>
@@ -34,7 +307,7 @@
 						<div
 							class="grid grid-cols-2 gap-x-1 rounded-full bg-white/5 p-1 text-center text-xs/5 font-semibold text-white"
 						>
-							<label class="group relative rounded-full px-2.5 py-1 has-checked:bg-indigo-500">
+							<label class="group relative rounded-full px-2.5 py-1 has-checked:bg-blue-800">
 								<input
 									type="radio"
 									name="frequency"
@@ -45,7 +318,7 @@
 								/>
 								<span class="text-white">Monthly</span>
 							</label>
-							<label class="group relative rounded-full px-2.5 py-1 has-checked:bg-indigo-500">
+							<label class="group relative rounded-full px-2.5 py-1 has-checked:bg-blue-800">
 								<input
 									type="radio"
 									name="frequency"
@@ -76,8 +349,8 @@
 					/>
 					<defs>
 						<radialGradient id="d25c25d4-6d43-4bf9-b9ac-1842a30a4867">
-							<stop stop-color="#7775D6" />
-							<stop offset="1" stop-color="#E935C1" />
+							<stop stop-color="#132045" />
+							<stop offset="1" stop-color="#193158" />
 						</radialGradient>
 					</defs>
 				</svg>
@@ -93,7 +366,7 @@
 							id="tier-tier-starter"
 							class="text-sm/6 font-semibold text-white group-data-featured/tier:text-gray-900"
 						>
-							Organizer
+							{tiers[0].name}
 						</h3>
 						<div
 							class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-stretch"
@@ -107,12 +380,12 @@
 								<p
 									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
 								>
-									$0
+									Free
 								</p>
 							</div>
 							<a
 								href="http://app.belcoda.com/signup"
-								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-indigo-600 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-indigo-600"
+								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-blue-800 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-blue-800"
 								>Get started</a
 							>
 						</div>
@@ -121,11 +394,9 @@
 								role="list"
 								class="-my-2 divide-y divide-white/5 border-t border-white/5 text-sm/6 text-white group-data-featured/tier:divide-gray-900/5 group-data-featured/tier:border-gray-900/5 group-data-featured/tier:text-gray-600 lg:border-t-0"
 							>
-								<PricingGridItem>Unlimited contacts, users & teams</PricingGridItem>
-								<PricingGridItem>3 admins accounts</PricingGridItem>
-								<PricingGridItem>All organizing features</PricingGridItem>
-								<PricingGridItem>Integrations & API</PricingGridItem>
-								<PricingGridItem>Community support</PricingGridItem>
+								{#each tiers[0].features as feature}
+									<PricingGridItem>{feature.name}</PricingGridItem>
+								{/each}
 							</ul>
 						</div>
 					</div>
@@ -139,7 +410,7 @@
 							id="tier-tier-scale"
 							class="text-sm/6 font-semibold text-white group-data-featured/tier:text-gray-900"
 						>
-							Institution
+							{tiers[1].name}
 						</h3>
 						<div
 							class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-stretch"
@@ -171,7 +442,7 @@
 							</div>
 							<a
 								href={`https://app.belcoda.com/signup?subscription=institution&paymentSchedule=${paymentSchedule}`}
-								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-indigo-600 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-indigo-600"
+								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-blue-900 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-blue-800"
 								>Subscribe now</a
 							>
 						</div>
@@ -180,11 +451,9 @@
 								role="list"
 								class="-my-2 divide-y divide-white/5 border-t border-white/5 text-sm/6 text-white group-data-featured/tier:divide-gray-900/5 group-data-featured/tier:border-gray-900/5 group-data-featured/tier:text-gray-600 lg:border-t-0"
 							>
-								<PricingGridItem>All free features</PricingGridItem>
-								<PricingGridItem>25 admin accounts</PricingGridItem>
-								<PricingGridItem>Custom domains</PricingGridItem>
-								<PricingGridItem>Email & page templates</PricingGridItem>
-								<PricingGridItem>Email & live chat support</PricingGridItem>
+								{#each tiers[1].features as feature}
+									<PricingGridItem>{feature.name}</PricingGridItem>
+								{/each}
 							</ul>
 						</div>
 					</div>
@@ -197,7 +466,7 @@
 							id="tier-tier-growth"
 							class="text-sm/6 font-semibold text-white group-data-featured/tier:text-gray-900"
 						>
-							Network
+							{tiers[2].name}
 						</h3>
 						<div
 							class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-stretch"
@@ -216,7 +485,7 @@
 							</div>
 							<a
 								href="https://cal.com/django-merope-8wwjmi/belcoda-network-exploration-call"
-								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-indigo-600 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-indigo-600"
+								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-blue-800 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-blue-800"
 								>Schedule a call</a
 							>
 						</div>
@@ -225,11 +494,9 @@
 								role="list"
 								class="-my-2 divide-y divide-white/5 border-t border-white/5 text-sm/6 text-white group-data-featured/tier:divide-gray-900/5 group-data-featured/tier:border-gray-900/5 group-data-featured/tier:text-gray-600 lg:border-t-0"
 							>
-								<PricingGridItem>SSO & custom access control</PricingGridItem>
-								<PricingGridItem>Dedicated support engineer</PricingGridItem>
-								<PricingGridItem>Advanced analytics & reporting</PricingGridItem>
-								<PricingGridItem>Cross-network organizing</PricingGridItem>
-								<PricingGridItem>White-glove onboarding</PricingGridItem>
+								{#each tiers[2].features as feature}
+									<PricingGridItem>{feature.name}</PricingGridItem>
+								{/each}
 							</ul>
 						</div>
 					</div>
@@ -244,894 +511,30 @@
 				<h2 id="mobile-comparison-heading" class="sr-only">Feature comparison</h2>
 
 				<div class="mx-auto max-w-2xl space-y-16">
-					<div class="border-t border-gray-900/10">
-						<div class="-mt-px w-72 border-t-2 border-transparent pt-10 md:w-80">
-							<h3 class="text-sm/6 font-semibold text-gray-900">Starter</h3>
-							<p class="mt-1 text-sm/6 text-gray-600">Everything you need to get started.</p>
-						</div>
-
-						<div class="mt-10 space-y-10">
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Core</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-1 ring-gray-900/10 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Edge content self-delivery</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Custom domains</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<span class="text-gray-900">1</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Team members</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<span class="text-gray-900">3</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Single sign-on (SSO)</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-1 ring-gray-900/10 sm:block"
-									></div>
-								</div>
+					{#each tierInfo as tier, tierIndex}
+						<div class="border-t border-gray-900/10">
+							<div
+								class="-mt-px w-72 border-t-2 {tierIndex === 1
+									? 'border-blue-800'
+									: 'border-transparent'} pt-10 md:w-80"
+							>
+								<h3
+									class="text-sm/6 font-semibold {tierIndex === 1
+										? 'text-blue-800'
+										: 'text-gray-900'}"
+								>
+									{tier.name}
+								</h3>
+								<p class="mt-1 text-sm/6 text-gray-600">{tier.description}</p>
 							</div>
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Reporting</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
 
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-1 ring-gray-900/10 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Advanced analytics</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Basic reports</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Professional reports</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Custom report builder</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-1 ring-gray-900/10 sm:block"
-									></div>
-								</div>
-							</div>
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Support</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-1 ring-gray-900/10 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">24/7 online support</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Quarterly workshops</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Priority phone support</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">1:1 onboarding tour</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-1 ring-gray-900/10 sm:block"
-									></div>
-								</div>
+							<div class="mt-10 space-y-10">
+								{#each comparisonData as category}
+									{@render mobileCategorySection(category, tierIndex, tierIndex === 1)}
+								{/each}
 							</div>
 						</div>
-					</div>
-					<div class="border-t border-gray-900/10">
-						<div class="-mt-px w-72 border-t-2 border-indigo-600 pt-10 md:w-80">
-							<h3 class="text-sm/6 font-semibold text-indigo-600">Scale</h3>
-							<p class="mt-1 text-sm/6 text-gray-600">Added flexibility at scale.</p>
-						</div>
-
-						<div class="mt-10 space-y-10">
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Features</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-2 ring-indigo-600 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Edge content delivery</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Custom domains</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<span class="font-semibold text-indigo-600">Unlimited</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Team members</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<span class="font-semibold text-indigo-600">Unlimited</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Single sign-on (SSO)</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-2 ring-indigo-600 sm:block"
-									></div>
-								</div>
-							</div>
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Reporting</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-2 ring-indigo-600 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Advanced analytics</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Basic reports</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Professional reports</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Custom report builder</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-2 ring-indigo-600 sm:block"
-									></div>
-								</div>
-							</div>
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Support</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-2 ring-indigo-600 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">24/7 online support</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Quarterly workshops</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Priority phone support</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">1:1 onboarding tour</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-2 ring-indigo-600 sm:block"
-									></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="border-t border-gray-900/10">
-						<div class="-mt-px w-72 border-t-2 border-transparent pt-10 md:w-80">
-							<h3 class="text-sm/6 font-semibold text-gray-900">Growth</h3>
-							<p class="mt-1 text-sm/6 text-gray-600">All the extras for your growing team.</p>
-						</div>
-
-						<div class="mt-10 space-y-10">
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Features</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-1 ring-gray-900/10 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Edge content delivery</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Custom domains</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<span class="text-gray-900">3</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Team members</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<span class="text-gray-900">20</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Single sign-on (SSO)</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-1 ring-gray-900/10 sm:block"
-									></div>
-								</div>
-							</div>
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Reporting</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-1 ring-gray-900/10 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Advanced analytics</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Basic reports</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Professional reports</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Custom report builder</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-1 ring-gray-900/10 sm:block"
-									></div>
-								</div>
-							</div>
-							<div>
-								<h4 class="text-sm/6 font-semibold text-gray-900">Support</h4>
-								<div class="relative mt-6">
-									<!-- Fake card background -->
-									<div
-										aria-hidden="true"
-										class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-xs sm:block"
-									></div>
-
-									<div
-										class="relative rounded-lg bg-white shadow-xs ring-1 ring-gray-900/10 sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0"
-									>
-										<dl class="divide-y divide-gray-200 text-sm/6">
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">24/7 online support</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Quarterly workshops</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-indigo-600"
-													>
-														<path
-															d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-															clip-rule="evenodd"
-															fill-rule="evenodd"
-														/>
-													</svg>
-													<span class="sr-only">Yes</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">Priority phone support</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-											<div
-												class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
-											>
-												<dt class="pr-4 text-gray-600">1:1 onboarding tour</dt>
-												<dd class="flex items-center justify-end sm:justify-center sm:px-4">
-													<svg
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														data-slot="icon"
-														aria-hidden="true"
-														class="mx-auto size-5 text-gray-400"
-													>
-														<path
-															d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-														/>
-													</svg>
-													<span class="sr-only">No</span>
-												</dd>
-											</div>
-										</dl>
-									</div>
-
-									<!-- Fake card border -->
-									<div
-										aria-hidden="true"
-										class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg ring-1 ring-gray-900/10 sm:block"
-									></div>
-								</div>
-							</div>
-						</div>
-					</div>
+					{/each}
 				</div>
 			</section>
 
@@ -1142,808 +545,78 @@
 				<div class="grid grid-cols-4 gap-x-8 border-t border-gray-900/10 before:block">
 					<div aria-hidden="true" class="-mt-px">
 						<div class="border-t-2 border-transparent pt-10">
-							<p class="text-sm/6 font-semibold text-gray-900">Starter</p>
-							<p class="mt-1 text-sm/6 text-gray-600">Everything you need to get started.</p>
+							<p class="text-sm/6 font-semibold text-gray-900">{tiers[0].name}</p>
+							<p class="mt-1 text-sm/6 text-gray-600">{tiers[0].description}</p>
 						</div>
 					</div>
 					<div aria-hidden="true" class="-mt-px">
-						<div class="border-t-2 border-indigo-600 pt-10">
-							<p class="text-sm/6 font-semibold text-indigo-600">Scale</p>
-							<p class="mt-1 text-sm/6 text-gray-600">Added flexibility at scale.</p>
+						<div class="border-t-2 border-blue-800 pt-10">
+							<p class="text-sm/6 font-semibold text-blue-800">{tiers[1].name}</p>
+							<p class="mt-1 text-sm/6 text-gray-600">{tiers[1].description}</p>
 						</div>
 					</div>
 					<div aria-hidden="true" class="-mt-px">
 						<div class="border-t-2 border-transparent pt-10">
-							<p class="text-sm/6 font-semibold text-gray-900">Growth</p>
-							<p class="mt-1 text-sm/6 text-gray-600">All the extras for your growing team.</p>
+							<p class="text-sm/6 font-semibold text-gray-900">{tiers[2].name}</p>
+							<p class="mt-1 text-sm/6 text-gray-600">{tiers[2].description}</p>
 						</div>
 					</div>
 				</div>
 
 				<div class="-mt-6 space-y-16">
-					<div>
-						<h3 class="text-sm/6 font-semibold text-gray-900">Features</h3>
-						<div class="relative -mx-8 mt-10">
-							<!-- Fake card backgrounds -->
-							<div
-								aria-hidden="true"
-								class="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-							>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-							</div>
+					{#each comparisonData as category}
+						<div>
+							<h3 class="text-sm/6 font-semibold text-gray-900">{category.name}</h3>
+							<div class="relative -mx-8 mt-10">
+								<!-- Fake card backgrounds -->
+								<div
+									aria-hidden="true"
+									class="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
+								>
+									<div class="size-full rounded-lg bg-white shadow-xs"></div>
+									<div class="size-full rounded-lg bg-white shadow-xs"></div>
+									<div class="size-full rounded-lg bg-white shadow-xs"></div>
+								</div>
 
-							<table class="relative w-full border-separate border-spacing-x-8">
-								<thead>
-									<tr class="text-left">
-										<th scope="col">
-											<span class="sr-only">Feature</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Starter tier</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Scale tier</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Growth tier</span>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Edge content delivery
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Custom domains
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<span class="text-sm/6 text-gray-900">1</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<span class="text-sm/6 font-semibold text-indigo-600">Unlimited</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<span class="text-sm/6 text-gray-900">3</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Team members
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<span class="text-sm/6 text-gray-900">3</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<span class="text-sm/6 font-semibold text-indigo-600">Unlimited</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<span class="text-sm/6 text-gray-900">20</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-											>Single sign-on (SSO)</th
-										>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+								<table class="relative w-full border-separate border-spacing-x-8">
+									<thead>
+										<tr class="text-left">
+											<th scope="col">
+												<span class="sr-only">Feature</span>
+											</th>
+											<th scope="col">
+												<span class="sr-only">Starter tier</span>
+											</th>
+											<th scope="col">
+												<span class="sr-only">Scale tier</span>
+											</th>
+											<th scope="col">
+												<span class="sr-only">Growth tier</span>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										{#each category.features as feature, featureIndex}
+											{@render desktopFeatureRow(
+												feature,
+												featureIndex === category.features.length - 1
+											)}
+										{/each}
+									</tbody>
+								</table>
 
-							<!-- Fake card borders -->
-							<div
-								aria-hidden="true"
-								class="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-							>
-								<div class="rounded-lg ring-1 ring-gray-900/10"></div>
-								<div class="rounded-lg ring-2 ring-indigo-600"></div>
-								<div class="rounded-lg ring-1 ring-gray-900/10"></div>
+								<!-- Fake card borders -->
+								<div
+									aria-hidden="true"
+									class="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
+								>
+									<div class="rounded-lg ring-1 ring-gray-900/10"></div>
+									<div class="rounded-lg ring-2 ring-blue-800"></div>
+									<div class="rounded-lg ring-1 ring-gray-900/10"></div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div>
-						<h3 class="text-sm/6 font-semibold text-gray-900">Reporting</h3>
-						<div class="relative -mx-8 mt-10">
-							<!-- Fake card backgrounds -->
-							<div
-								aria-hidden="true"
-								class="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-							>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-							</div>
-
-							<table class="relative w-full border-separate border-spacing-x-8">
-								<thead>
-									<tr class="text-left">
-										<th scope="col">
-											<span class="sr-only">Feature</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Starter tier</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Scale tier</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Growth tier</span>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Advanced analytics
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Basic reports
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Professional reports
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-											>Custom report builder</th
-										>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-							<!-- Fake card borders -->
-							<div
-								aria-hidden="true"
-								class="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-							>
-								<div class="rounded-lg ring-1 ring-gray-900/10"></div>
-								<div class="rounded-lg ring-2 ring-indigo-600"></div>
-								<div class="rounded-lg ring-1 ring-gray-900/10"></div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<h3 class="text-sm/6 font-semibold text-gray-900">Support</h3>
-						<div class="relative -mx-8 mt-10">
-							<!-- Fake card backgrounds -->
-							<div
-								aria-hidden="true"
-								class="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-							>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-								<div class="size-full rounded-lg bg-white shadow-xs"></div>
-							</div>
-
-							<table class="relative w-full border-separate border-spacing-x-8">
-								<thead>
-									<tr class="text-left">
-										<th scope="col">
-											<span class="sr-only">Feature</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Starter tier</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Scale tier</span>
-										</th>
-										<th scope="col">
-											<span class="sr-only">Growth tier</span>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											24/7 online support
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Quarterly worksdhops
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-										>
-											Priority phone support
-											<div class="absolute inset-x-8 mt-3 h-px bg-gray-200"></div>
-										</th>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<th
-											scope="row"
-											class="w-1/4 py-3 pr-4 text-left text-sm/6 font-normal text-gray-900"
-											>1:1 onboarding tour</th
-										>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-indigo-600"
-												>
-													<path
-														d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-														clip-rule="evenodd"
-														fill-rule="evenodd"
-													/>
-												</svg>
-												<span class="sr-only">Yes</span>
-											</span>
-										</td>
-										<td class="relative w-1/4 px-4 py-0 text-center">
-											<span class="relative size-full py-3">
-												<svg
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													data-slot="icon"
-													aria-hidden="true"
-													class="mx-auto size-5 text-gray-400"
-												>
-													<path
-														d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-													/>
-												</svg>
-												<span class="sr-only">No</span>
-											</span>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-							<!-- Fake card borders -->
-							<div
-								aria-hidden="true"
-								class="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-							>
-								<div class="rounded-lg ring-1 ring-gray-900/10"></div>
-								<div class="rounded-lg ring-2 ring-indigo-600"></div>
-								<div class="rounded-lg ring-1 ring-gray-900/10"></div>
-							</div>
-						</div>
-					</div>
+					{/each}
 				</div>
 			</section>
 		</div>
