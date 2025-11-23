@@ -16,13 +16,14 @@
 	const screenshotReporting = '/screenshots/reporting.png';
 	const screenshotVatReturns = '/screenshots/vat-returns.png';
 
-	import CommunityImg from '$lib/comps/content/assets/mockup-browser-small.webp';
+	import CommunityImg from '$lib/comps/content/assets/browser-mockup-community.webp';
+	import CommunicationsImg from '$lib/comps/content/assets/browser-mockup-communications.webp';
+	import EventsImg from '$lib/comps/content/assets/browser-mockup-event.webp';
 
 	const images = {
 		Community: CommunityImg,
-		Communications: CommunityImg,
-		Events: CommunityImg,
-		Action: CommunityImg
+		Communications: CommunicationsImg,
+		Events: EventsImg
 	};
 
 	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
