@@ -16,6 +16,16 @@
 	<meta name="description" content="Belcoda is a platform for community organizing and activism." />
 	<meta name="keywords" content="Belcoda, community organizing, activism, social change" />
 	<meta name="image" content="https://belcoda.com/images/belcoda-image.png" />
+	<meta name="og:image" content="https://belcoda.com/images/belcoda-image.png" />
+	<meta name="og:title" content="Belcoda" />
+	<meta
+		name="og:description"
+		content="Belcoda is a platform for community organizing and activism."
+	/>
+	<meta name="og:url" content="https://belcoda.com" />
+	<meta name="og:type" content="website" />
+	<meta name="og:published_time" content="2025-11-22" />
+	<meta name="og:modified_time" content="2025-11-22" />
 	<meta name="url" content="https://belcoda.com" />
 	<meta name="type" content="website" />
 	<meta name="published_time" content="2025-11-22" />
