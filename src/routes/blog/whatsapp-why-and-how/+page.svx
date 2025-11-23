@@ -1,20 +1,10 @@
 ---
-title: One integration isn't enough
-author: Matteo De Vos
-slug: what-is-power-tools
+slug: whatsapp-why-and-how
 layout: blog
-date: 2025-11-13
-tag: WhatsApp
-darken_image: true
-image: /images/blog/what-is-power-tools.webp
-description: Why does Belcoda need a blog? What will we write about? And why should you care?
-author_avatar: /avatars/matteo.webp
 ---
 <script>
 import NewsletterSignup from "$lib/comps/blog/BlogSignup.svelte";
 </script>
-
-## Why use WhatsApp for community organizing?
 
 WhatsApp is the most popular mobile messaging app worldwide, with over three billion monthly active users ([March 2025](https://www.statista.com/statistics/260819/number-of-monthly-active-whatsapp-users/)). India, with 854 million users, has the highest [number of users by country](https://worldpopulationreview.com/country-rankings/whatsapp-users-by-country), followed by Brazil (148 million), Indonesia (112 million), the United States (98 million) and The Philippines (88 million). 
 

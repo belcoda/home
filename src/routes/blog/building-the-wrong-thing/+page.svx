@@ -1,14 +1,6 @@
 ---
-title: What is Power Tools?
-author: Django Merope Synge
-slug: what-is-power-tools
+slug: building-the-wrong-thing
 layout: blog
-date: 2025-11-13
-tag: Belcoda
-darken_image: true
-image: /images/blog/what-is-power-tools.webp
-description: Why does Belcoda need a blog? What will we write about? And why should you care?
-author_avatar: /avatars/django-img.jpg
 ---
 <script>
 import NewsletterSignup from "$lib/comps/blog/BlogSignup.svelte";

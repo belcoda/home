@@ -3,7 +3,7 @@ const authors = [
 		name: 'Django Merope',
 		slug: 'django-merope',
 		avatar: '/avatars/django-img.jpg',
-		title: 'Project lead'
+		title: 'Founder & Project lead'
 	},
 
 	{
@@ -27,6 +27,10 @@ export function isAuthor(name: string): name is Author['name'] {
 
 export function getAuthorBySlug(slug: string): Author | undefined {
 	return authors.find((author) => author.slug === slug);
+}
+
+export function getAuthor(name: string): Author | undefined {
+	return authors.find((author) => author.name === name);
 }
 
 export default authors;

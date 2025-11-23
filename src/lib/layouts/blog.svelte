@@ -2,35 +2,15 @@
 	import Header from '$lib/comps/nav/Header.svelte';
 	import Footer from '$lib/comps/nav/Footer.svelte';
 	import { type Snippet } from 'svelte';
-	type Props = {
-		title: string;
-		author: string;
-		date: string;
-		slug: string;
-		description: string;
-		author_avatar: string;
-		author_title?: string;
-		tag: string;
-		image?: string;
-		darken_image?: boolean;
-		children: Snippet;
-	};
-	const {
-		title,
-		author,
-		date,
-		description,
-		author_avatar,
-		slug,
-		author_title,
-		tag,
-		image,
-		children,
-		darken_image = false
-	}: Props = $props();
+	import { getPostBySlug } from '$lib/comps/blog/posts';
+	const { slug, children }: { slug: string; children: Snippet } = $props();
+	const post = getPostBySlug(slug)!;
+	const { title, description, image, author, date, tag, darken_image = true } = post;
 
-	const backgroundImage = image || '/background-auth.jpg';
+	const backgroundImage = image ? `url('${image}')` : 'url("/background-auth.jpg")';
 	import BlogBreadcrumbs from '$lib/comps/blog/BlogBreadcrumbs.svelte';
+	import { getAuthor } from '$lib/comps/blog/authors';
+	const authorData = getAuthor(author);
 </script>
 
 <svelte:head>
@@ -42,7 +22,9 @@
 	<meta name="type" content="article" />
 	<meta name="published_time" content={date} />
 	<meta name="modified_time" content={date} />
-	<meta name="author" content={author} />
+	{#if authorData}
+		<meta name="author" content={authorData.name} />
+	{/if}
 	<meta name="og:title" content={title} />
 	<meta name="og:description" content={description} />
 	<meta name="og:image" content={image} />
@@ -55,7 +37,7 @@
 
 <div
 	class="relative flex h-120 w-full items-end justify-start bg-linear-to-b from-blue-200 to-white bg-cover bg-center bg-no-repeat"
-	style="background-image: url('{backgroundImage}')"
+	style="background-image: {backgroundImage};"
 >
 	<Header />
 
@@ -81,24 +63,26 @@
 					day: 'numeric'
 				})}</time
 			>
-			<div class="-ml-4 flex items-center gap-x-4">
-				<svg viewBox="0 0 2 2" class="-ml-0.5 size-1 flex-none fill-white/50">
-					<circle r="1" cx="1" cy="1" />
-				</svg>
-				<div class="flex items-center gap-x-2.5">
-					<img
-						src={author_avatar}
-						alt="{author} avatar"
-						class="size-8 flex-none rounded-full bg-white/10"
-					/>
-					<div>
-						<div class="font-medium">{author}</div>
-						{#if author_title}
-							<div class="-mt-1 text-gray-200/70">{author_title}</div>
-						{/if}
+			{#if authorData}
+				<div class="-ml-4 flex items-center gap-x-4">
+					<svg viewBox="0 0 2 2" class="-ml-0.5 size-1 flex-none fill-white/50">
+						<circle r="1" cx="1" cy="1" />
+					</svg>
+					<div class="flex items-center gap-x-2.5">
+						<img
+							src={authorData.avatar}
+							alt={authorData.name}
+							class="size-8 flex-none rounded-full bg-white/10"
+						/>
+						<div>
+							<div class="font-medium">{authorData.name}</div>
+							{#if authorData.title}
+								<div class="-mt-1 text-gray-200/70">{authorData.title}</div>
+							{/if}
+						</div>
 					</div>
 				</div>
-			</div>
+			{/if}
 		</div>
 		<!-- Description -->
 		<p class="mt-4 mb-8 text-lg/8 text-pretty text-gray-200">{description}</p>
