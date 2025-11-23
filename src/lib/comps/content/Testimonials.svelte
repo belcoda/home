@@ -2,6 +2,9 @@
 	import imageAsmaa from '$lib/assets/avatars/asmaa.jpg';
 	import imageArnold from '$lib/assets/avatars/arnold.webp';
 	import imageEmmanuel from '$lib/assets/avatars/emmanuel.webp';
+
+	//org logos
+	import logoGreenSociety from '$lib/comps/content/assets/green-society.png';
 </script>
 
 <div class="relative isolate bg-gray-50 pt-24 pb-32 sm:pt-32">
@@ -62,11 +65,7 @@
 						<div class="font-semibold text-gray-900">Asmaa Hanafi</div>
 						<div class="text-gray-600">Green Society</div>
 					</div>
-					<img
-						src="https://tailwindcss.com/plus-assets/img/logos/savvycal-logo-gray-900.svg"
-						alt=""
-						class="h-10 w-auto flex-none"
-					/>
+					<img src={logoGreenSociety} alt="Green Society logo" class="h-10 w-auto flex-none" />
 				</figcaption>
 			</figure>
 			<div class="space-y-8 xl:contents xl:space-y-0">
