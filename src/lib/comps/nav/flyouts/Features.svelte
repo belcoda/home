@@ -5,6 +5,8 @@
 	import UsersIcon from '@lucide/svelte/icons/users';
 	import CalendarDaysIcon from '@lucide/svelte/icons/calendar-days';
 	import MessageCircleIcon from '@lucide/svelte/icons/message-circle';
+	const youtubeLink = 'https://www.youtube.com/watch?v=PIe6kR3CL6c';
+	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
 </script>
 
 <Popover.Root bind:open>
@@ -71,7 +73,7 @@
 			</div>
 			<div class="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
 				<a
-					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+					href={youtubeLink}
 					target="_blank"
 					class="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
 				>
@@ -91,7 +93,7 @@
 					3 minute intro
 				</a>
 				<a
-					href="https://cal.com/django-merope-8wwjmi/belcoda-information-call"
+					href={bookACallUrl}
 					target="_blank"
 					class="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
 				>
