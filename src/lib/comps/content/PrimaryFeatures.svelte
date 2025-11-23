@@ -20,6 +20,10 @@
 	import CommunicationsImg from '$lib/comps/content/assets/browser-mockup-communications.webp';
 	import EventsImg from '$lib/comps/content/assets/browser-mockup-event.webp';
 
+	//what's new
+	const whatsNewLink = 'https://support.belcoda.com/changelog/d52c8af8-c47e-4fea-96dd-de056035de6a';
+	const whatsNewTitle = '✨ Customize event pages';
+
 	const images = {
 		Community: CommunityImg,
 		Communications: CommunicationsImg,
@@ -221,10 +225,10 @@
 
 {#snippet whatsnew()}
 	<div class="mb-4 flex justify-center">
-		<a href="/" class="inline-flex space-x-6">
+		<a href={whatsNewLink} target="_blank" class="inline-flex space-x-6">
 			<div><Badge>What's new</Badge></div>
 			<span class="inline-flex items-center space-x-2 text-sm/6 font-medium text-white">
-				<span>🎉 Just shipped v1.0</span>
+				<span>{whatsNewTitle}</span>
 				<svg
 					viewBox="0 0 20 20"
 					fill="currentColor"
