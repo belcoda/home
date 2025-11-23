@@ -8,7 +8,16 @@
 	let paymentSchedule: 'monthly' | 'annual' = $state('monthly');
 	import { tiers } from '$lib/comps/content/pricing';
 
-	type FeatureValue = boolean | number | 'Unlimited' | '$1.20' | '~$0.25' | 'Rate card';
+	type FeatureValue =
+		| boolean
+		| number
+		| 'Unlimited'
+		| '$1.20'
+		| '~$0.25'
+		| 'Rate card'
+		| 'Basic'
+		| 'Advanced'
+		| 'Custom';
 
 	interface Feature {
 		name: string;
@@ -28,15 +37,45 @@
 			name: 'Organizing',
 			features: [
 				{
-					name: 'Edge content delivery',
-					mobileName: 'Edge content self-delivery',
-					starter: true,
-					scale: true,
-					growth: true
+					name: 'Contacts',
+					mobileName: 'Contacts',
+					starter: 'Unlimited',
+					scale: 'Unlimited',
+					growth: 'Unlimited'
 				},
-				{ name: 'Custom domains', starter: 1, scale: 'Unlimited', growth: 3 },
-				{ name: 'Team members', starter: 3, scale: 'Unlimited', growth: 20 },
-				{ name: 'Single sign-on (SSOasasa)', starter: false, scale: true, growth: false }
+				{
+					name: 'Teams',
+					starter: 'Unlimited',
+					scale: 'Unlimited',
+					growth: 'Unlimited'
+				},
+				{
+					name: 'Users & volunteers',
+					starter: 'Unlimited',
+					scale: 'Unlimited',
+					growth: 'Unlimited'
+				},
+				{
+					name: 'Tracked WhatsApp groups',
+					starter: 'Unlimited',
+					scale: 'Unlimited',
+					growth: 'Unlimited'
+				},
+				{
+					name: 'Administrator accounts',
+					starter: 3,
+					scale: 25,
+					growth: 'Unlimited'
+				},
+				{
+					name: 'Analytics & report',
+					starter: 'Basic',
+					scale: 'Advanced',
+					growth: 'Custom'
+				},
+				{ name: 'Data import/export', starter: true, scale: true, growth: true },
+				{ name: 'Duplicate management', starter: true, scale: true, growth: true },
+				{ name: 'Contact notes', starter: true, scale: true, growth: true }
 			]
 		},
 		{
