@@ -33,8 +33,11 @@
 				</span>
 			</div>
 			<p class="mt-2 text-4xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-5xl">
-				Loved by organizers all over the world
+				Hear from organizers using Belcoda
 			</p>
+			<!-- <p class="mt-2 text-4xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-5xl">
+				Loved by organizers all over the world
+			</p> -->
 		</div>
 		<div
 			class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4"
@@ -45,23 +48,19 @@
 				<blockquote
 					class="p-6 text-lg font-semibold tracking-tight text-gray-900 sm:p-12 sm:text-xl/8"
 				>
-					<p>
-						“Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor
-						libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis
-						blandit vel et proin. Non hendrerit in vel ac diam.”
-					</p>
+					<p>“Belcoda is more than just a tool – it's a partner in action.”</p>
 				</blockquote>
 				<figcaption
 					class="flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 px-6 py-4 sm:flex-nowrap"
 				>
 					<img
-						src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
-						alt=""
+						src={imageAsmaa}
+						alt="Asmaa Hanafi"
 						class="size-10 flex-none rounded-full bg-gray-50"
 					/>
 					<div class="flex-auto">
-						<div class="font-semibold text-gray-900">Brenna Goyette</div>
-						<div class="text-gray-600">@brennagoyette</div>
+						<div class="font-semibold text-gray-900">Asmaa Hanafi</div>
+						<div class="text-gray-600">Green Society</div>
 					</div>
 					<img
 						src="https://tailwindcss.com/plus-assets/img/logos/savvycal-logo-gray-900.svg"
@@ -87,7 +86,7 @@
 							</div>
 						</figcaption>
 					</figure>
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>“Belcoda is more than just a tool – it's a partner in action.”</p>
 						</blockquote>
@@ -98,7 +97,7 @@
 								<div class="text-gray-600">Green Society</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
@@ -120,7 +119,7 @@
 					</figure> -->
 				</div>
 				<div class="space-y-8 xl:row-start-1">
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
 								“The app is free and easy to use, you just click that you're organizing an event or
@@ -138,7 +137,7 @@
 								<div class="text-gray-600">Pads4Education</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
@@ -162,7 +161,7 @@
 			</div>
 			<div class="space-y-8 xl:contents xl:space-y-0">
 				<div class="space-y-8 xl:row-start-1">
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
 								“Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis repudiandae.
@@ -180,7 +179,7 @@
 								<div class="text-gray-600">@tomcook</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
@@ -205,23 +204,23 @@
 					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
-								“Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt
-								excepturi rerum voluptatem minus harum.”
+								“The app is free and easy to use, you just click that you're organizing an event or
+								sharing messages, and everything runs exactly the way you wanted.”
 							</p>
 						</blockquote>
 						<figcaption class="mt-6 flex items-center gap-x-4">
 							<img
-								src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-								alt=""
+								src={imageEmmanuel}
+								alt="Emmanuel Ng’olepus"
 								class="size-10 rounded-full bg-gray-50"
 							/>
 							<div>
-								<div class="font-semibold text-gray-900">Leonard Krasner</div>
-								<div class="text-gray-600">@leonardkrasner</div>
+								<div class="font-semibold text-gray-900">Emmanuel Ng’olepus</div>
+								<div class="text-gray-600">Pads4Education</div>
 							</div>
 						</figcaption>
 					</figure>
-					<figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
 								“Architecto libero natus est. Est quam debitis officia enim atque et ut non. Sunt
@@ -239,7 +238,7 @@
 								<div class="text-gray-600">@floydmiles</div>
 							</div>
 						</figcaption>
-					</figure>
+					</figure> -->
 					<!-- <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
 						<blockquote class="text-gray-900">
 							<p>
