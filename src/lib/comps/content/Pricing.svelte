@@ -74,12 +74,30 @@
 									{/each}
 								</ul>
 							</div>
-							<a
-								href="#"
-								aria-describedby="tier-{tier.name.toLowerCase()}"
-								class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-								>Get started today</a
-							>
+							{#if tier.name === 'Organization'}
+								<a
+									href="http://app.belcoda.com/signup"
+									aria-describedby="tier-{tier.name.toLowerCase()}"
+									class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+									>Get started</a
+								>
+							{/if}
+							{#if tier.name === 'Institution'}
+								<a
+									href="https://app.belcoda.com/signup?subscription=institution&paymentSchedule=annual"
+									aria-describedby="tier-{tier.name.toLowerCase()}"
+									class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+									>Subscribe now</a
+								>
+							{/if}
+							{#if tier.name === 'Network'}
+								<a
+									href="https://cal.com/django-merope-8wwjmi/belcoda-network-exploration-call"
+									aria-describedby="tier-{tier.name.toLowerCase()}"
+									class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+									>Schedule a call</a
+								>
+							{/if}
 						</div>
 					{/each}
 					<div
