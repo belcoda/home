@@ -42,10 +42,10 @@ export const posts = [
 	{
 		title: 'WhatsApp One Integration Is Not Enough',
 		slug: 'whatsapp-one-integration-is-not-enough',
-		description: `Belcoda doesn't have one WhatsApp integration. Instead, WhatsApp is woven **throughout** the platform.`,
+		description: `Belcoda doesn't have one WhatsApp integration. Instead, WhatsApp is woven <strong>throughout</strong> the platform.`,
 		image: '/images/blog/whatsapp-1.webp',
 		date: '2025-11-23',
-		author: 'Matteo De Vos',
+		author: 'Django Merope',
 		tag: 'WhatsApp'
 	}
 ] as const satisfies Post[];

@@ -85,7 +85,7 @@
 			{/if}
 		</div>
 		<!-- Description -->
-		<p class="mt-4 mb-8 text-lg/8 text-pretty text-gray-200">{description}</p>
+		<p class="mt-4 mb-8 text-lg/8 text-pretty text-gray-200">{@html description}</p>
 	</div>
 	{#if darken_image}
 		<div class="absolute inset-0 bg-black/50"></div>
