@@ -17,8 +17,8 @@
 		</div>
 		<div class="relative mt-6">
 			<p class="mx-auto max-w-2xl text-lg font-medium text-pretty text-blue-200 sm:text-xl/8">
-				Belcoda is free for everyone. Paid plans include additional features designed for networks
-				and institutions.
+				Belcoda is free for all grassroots organizations and communities. We also offer partnerships
+				for large networks and enterprise organizations.
 			</p>
 		</div>
 	</div>
@@ -36,17 +36,17 @@
 									{tier.name}
 								</h3>
 								<div class="mt-4 flex items-baseline gap-x-2">
-									{#if tier.name === 'Organization'}
+									{#if tier.name === 'Free'}
 										<span class="text-4xl font-semibold tracking-tight text-gray-900">Free</span>
+									{/if}
+									{#if tier.name === 'Supported'}
+										<span class="text-4xl font-semibold tracking-tight text-gray-900"
+											>Partnership</span
+										>
 									{/if}
 									{#if tier.name === 'Network'}
 										<span class="text-4xl font-semibold tracking-tight text-gray-900"
 											>Get in touch</span
-										>
-									{/if}
-									{#if tier.name === 'Institution'}
-										<span class="text-4xl font-semibold tracking-tight text-gray-900"
-											>${tier.price}</span
 										>
 									{/if}
 								</div>
@@ -74,7 +74,7 @@
 									{/each}
 								</ul>
 							</div>
-							{#if tier.name === 'Organization'}
+							{#if tier.name === 'Free'}
 								<a
 									href="http://app.belcoda.com/signup"
 									aria-describedby="tier-{tier.name.toLowerCase()}"
@@ -82,12 +82,13 @@
 									>Get started</a
 								>
 							{/if}
-							{#if tier.name === 'Institution'}
+							{#if tier.name === 'Supported'}
 								<a
-									href="https://app.belcoda.com/signup?subscription=institution&paymentSchedule=annual"
+									href="https://belcoda.org"
+									target="_blank"
 									aria-describedby="tier-{tier.name.toLowerCase()}"
 									class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-									>Subscribe now</a
+									>Apply for support</a
 								>
 							{/if}
 							{#if tier.name === 'Network'}
@@ -108,9 +109,10 @@
 								The Belcoda Foundation
 							</h3>
 							<p class="mt-1 text-base/7 text-gray-600">
-								Need paid features, but don't have the budget? The Belcoda Foundation partners with
-								philanthropic foundations to provide software grants and support to eligible
-								locally-led grassroots initiatives in the Global South.
+								Need additional features but don't have the budget? Apply for the Supported tier
+								through the Belcoda Foundation, which partners with philanthropic foundations to
+								provide software grants and support to eligible locally-led grassroots initiatives
+								in the Global South.
 							</p>
 							<div class="mt-6">
 								<a

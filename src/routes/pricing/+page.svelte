@@ -5,7 +5,6 @@
 	import CTA1 from '$lib/comps/content/CTA1.svelte';
 
 	import PricingGridItem from './PricingGridItem.svelte';
-	let paymentSchedule: 'monthly' | 'annual' = $state('monthly');
 	import { tiers } from '$lib/comps/content/pricing';
 
 	type FeatureValue =
@@ -160,8 +159,8 @@
 
 	const tierInfo = [
 		{ name: tiers[0].name, description: 'Everything you need to get started.' },
-		{ name: tiers[1].name, description: 'Added flexibility at scale.' },
-		{ name: tiers[2].name, description: 'All the extras for your growing team.' }
+		{ name: tiers[1].name, description: 'Additional features, foundation-funded for eligible organizations.' },
+		{ name: tiers[2].name, description: 'Enterprise features for networks and large organizations.' }
 	];
 
 	function getFeatureValue(
@@ -338,38 +337,9 @@
 				<p
 					class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-400 sm:text-xl/8"
 				>
-					Belcoda is free for everyone. Paid plans include additional features designed for networks
-					and institutions.
+					Our Supported tier provides additional features for organizations that need them, with
+					foundations funding the cost. Our Partnership tier is for networks and enterprise.
 				</p>
-				<div class="mt-16 flex justify-center">
-					<fieldset aria-label="Payment frequency">
-						<div
-							class="grid grid-cols-2 gap-x-1 rounded-full bg-white/5 p-1 text-center text-xs/5 font-semibold text-white"
-						>
-							<label class="group relative rounded-full px-2.5 py-1 has-checked:bg-blue-800">
-								<input
-									type="radio"
-									name="frequency"
-									value="monthly"
-									bind:group={paymentSchedule}
-									checked
-									class="absolute inset-0 appearance-none rounded-full"
-								/>
-								<span class="text-white">Monthly</span>
-							</label>
-							<label class="group relative rounded-full px-2.5 py-1 has-checked:bg-blue-800">
-								<input
-									type="radio"
-									name="frequency"
-									value="annual"
-									bind:group={paymentSchedule}
-									class="absolute inset-0 appearance-none rounded-full"
-								/>
-								<span class="text-white">Annually</span>
-							</label>
-						</div>
-					</fieldset>
-				</div>
 			</div>
 			<div
 				class="relative mx-auto mt-10 grid max-w-md grid-cols-1 gap-y-8 lg:mx-0 lg:-mb-14 lg:max-w-none lg:grid-cols-3"
@@ -412,12 +382,7 @@
 						>
 							<div class="mt-2 flex items-center gap-x-4">
 								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
-								>
-									Free
-								</p>
-								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
+									class="text-4xl font-semibold tracking-tight text-white group-data-featured/tier:text-gray-900"
 								>
 									Free
 								</p>
@@ -456,33 +421,16 @@
 						>
 							<div class="mt-2 flex items-center gap-x-4">
 								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
+									class="text-4xl font-semibold tracking-tight text-white group-data-featured/tier:text-gray-900"
 								>
-									$279
+									Foundation-funded
 								</p>
-								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
-								>
-									$2,799
-								</p>
-								<div class="text-sm">
-									<p class="text-white group-data-featured/tier:text-gray-900">USD</p>
-									<p
-										class="text-gray-400 group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-500"
-									>
-										Billed monthly
-									</p>
-									<p
-										class="text-gray-400 group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-500"
-									>
-										Billed annually
-									</p>
-								</div>
 							</div>
 							<a
-								href={`https://app.belcoda.com/signup?subscription=institution&paymentSchedule=${paymentSchedule}`}
+								href="https://belcoda.org"
+								target="_blank"
 								class="w-full rounded-md bg-white/10 px-3 py-2 text-center text-sm/6 font-semibold text-white not-group-data-featured:inset-ring not-group-data-featured:inset-ring-white/5 group-data-featured/tier:bg-blue-900 group-data-featured/tier:shadow-xs hover:bg-white/20 group-data-featured/tier:hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75 group-data-featured/tier:focus-visible:outline-blue-800"
-								>Subscribe now</a
+								>Apply for support</a
 							>
 						</div>
 						<div class="mt-8 flow-root sm:mt-10">
@@ -512,12 +460,7 @@
 						>
 							<div class="mt-2 flex items-center gap-x-4">
 								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
-								>
-									Get in touch
-								</p>
-								<p
-									class="text-4xl font-semibold tracking-tight text-white group-not-has-[[name=frequency][value=annual]:checked]/tiers:hidden group-data-featured/tier:text-gray-900"
+									class="text-4xl font-semibold tracking-tight text-white group-data-featured/tier:text-gray-900"
 								>
 									Get in touch
 								</p>
@@ -624,13 +567,13 @@
 												<span class="sr-only">Feature</span>
 											</th>
 											<th scope="col">
-												<span class="sr-only">Starter tier</span>
+												<span class="sr-only">Free tier</span>
 											</th>
 											<th scope="col">
-												<span class="sr-only">Scale tier</span>
+												<span class="sr-only">Supported tier</span>
 											</th>
 											<th scope="col">
-												<span class="sr-only">Growth tier</span>
+												<span class="sr-only">Partnership tier</span>
 											</th>
 										</tr>
 									</thead>

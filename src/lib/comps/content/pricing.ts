@@ -1,6 +1,6 @@
 export const tiers = [
 	{
-		name: 'Organization',
+		name: 'Free',
 		price: 0,
 		description: 'Everything needed for distributed campaigns.',
 		interval: null,
@@ -23,11 +23,8 @@ export const tiers = [
 		]
 	},
 	{
-		name: 'Institution',
-		price: 279,
-		priceAnnual: 2799,
-		description: 'For well-established organizations & campaigns',
-		interval: 'admin',
+		name: 'Supported',
+		description: 'Additional features for organizations that need them—foundations fund the cost.',
 		features: [
 			{
 				name: '25 admin accounts'
@@ -49,7 +46,7 @@ export const tiers = [
 	{
 		name: 'Network',
 		price: 0,
-		description: 'For large enterprise organizations & networks',
+		description: 'For large networks and enterprise organizations.',
 		features: [
 			{
 				name: 'SSO & role based access control'

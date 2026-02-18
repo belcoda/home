@@ -274,7 +274,7 @@
 					</dd>
 				</div>
 				<div>
-					<dt class="font-semibold text-gray-800">Never forget the free tier</dt>
+					<dt class="font-semibold text-gray-800">Free for everyone</dt>
 					<dd class="mt-1 text-gray-500">
 						Belcoda was built to serve locally-led community initatives in low- and middle-income
 						countries (ie: people who don't have budgets for paid software). That's still our north

@@ -12,17 +12,12 @@
 		},
 		{
 			title: `Can I change plans later?`,
-			answer: `Yes, you can change your organization’s plan at any time using the billing page in your organization’s settings. You can also downgrade to the free plan at any time, too.`,
+			answer: `Yes. You can apply for Supported tier access at any time through the Belcoda Foundation. Partnership tier is available by contacting us.`,
 			open: false
 		},
 		{
 			title: `Can I create multiple Belcoda organizations?`,
-			answer: `Yes! And you can be logged into multiple organizations at once, and switch between them, too. If you want to set up a network of multiple organizations, get in touch to talk about our Network plan.`,
-			open: false
-		},
-		{
-			title: `Do you have any supported or discounted plans?`,
-			answer: `We run the Belcoda Foundation, which provides supported access to selected grassroots and locally led community initiatives to access non-free features of Belcoda in partnership with philanthropy. For more details, check out the Belcoda Foundation.`,
+			answer: `Yes! And you can be logged into multiple organizations at once, and switch between them, too. If you want to set up a network of multiple organizations, get in touch to talk about our Partnership tier.`,
 			open: false
 		},
 		{
