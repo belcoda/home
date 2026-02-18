@@ -79,6 +79,9 @@
 									class="text-sm/6 text-gray-400 hover:text-white">Careers</a
 								>
 							</li>
+							<li>
+								<a href="/anbi" class="text-sm/6 text-gray-400 hover:text-white">ANBI</a>
+							</li>
 						</ul>
 					</div>
 					<div class="mt-10 md:mt-0">
@@ -195,7 +198,7 @@
 			</div>
 		</div>
 		<p class="mt-8 text-center text-xs text-gray-400">
-			&copy; {new Date().getFullYear()} Belcoda LLC. All rights reserved.
+			&copy; {new Date().getFullYear()} Stichting Belcoda. All rights reserved.
 		</p>
 	</div>
 </footer>

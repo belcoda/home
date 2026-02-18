@@ -43,7 +43,7 @@ For easier typing and faster multitasking, organizers can use **WhatsApp Web** o
     
     Normally, sending large volumes of messages or creating automated interactive threads (e.g. “Reply 1 to sign up, 2 to learn more”) requires API-based tools such as WhatsApp Business API integrations, which can be expensive and restricted. Belcoda makes it easier for grassroots organizers to send bulk messages and set up interactive threads without paying extra for the API, while still allowing actions like petitions, signups, or surveys directly in WhatsApp.
     
-- [**wa.me](http://wa.me/) links with encoded messages**
+- **[wa.me](http://wa.me/) links with encoded messages**
     
     WhatsApp allows you to create clickable links (e.g. `wa.me/1234567890?text=I+want+to+join+your+campaign`) or QR codes that opens WhatsApp with a pre-filled message to your number. This makes it easy for people to contact you directly from a website, social post, or flyer. Belcoda makes this simple by automatically generating WhatsApp links and QR codes for your petitions, event signups, or other campaign actions.
     
