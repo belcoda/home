@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as Drawer from '$lib/comps/ui/drawer/index.js';
+	import * as Accordion from '$lib/comps/ui/accordion/index.js';
 	import XIcon from '@lucide/svelte/icons/x';
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
 	import YouTubeIcon from '@lucide/svelte/icons/youtube';
@@ -57,66 +58,54 @@
 						>
 					</li>
 					<li>
-						<button
-							type="button"
-							command="--toggle"
-							commandfor="sub-menu-1"
-							class="flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm/6 font-semibold text-gray-700 hover:bg-gray-50"
-						>
-							<svg
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								data-slot="icon"
-								aria-hidden="true"
-								class="size-5 shrink-0 not-in-aria-expanded:text-gray-400 in-aria-expanded:rotate-90 in-aria-expanded:text-gray-500"
-							>
-								<path
-									d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-									clip-rule="evenodd"
-									fill-rule="evenodd"
-								/>
-							</svg>
-							Features
-						</button>
-						<el-disclosure id="sub-menu-1" hidden class="contents">
-							<ul class="mt-1 px-2">
-								<li>
-									<a
-										href="/features/organizing"
-										class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Organizing</a
-									>
-								</li>
-								<li>
-									<a
-										href="/features/whatsapp"
-										class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>WhatsApp</a
-									>
-								</li>
-								<li>
-									<a
-										href="/features/events"
-										class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Events</a
-									>
-								</li>
-								<li>
-									<a
-										href="/features/actions"
-										class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Actions</a
-									>
-								</li>
-								<li>
-									<a
-										href="/features/integrations"
-										class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Integrations</a
-									>
-								</li>
-							</ul>
-						</el-disclosure>
+						<Accordion.Root type="single" class="border-none pl-8">
+							<Accordion.Item value="features" class="border-none">
+								<Accordion.Trigger
+									class="flex w-full items-center gap-x-3 rounded-md p-2 py-2 text-left text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:no-underline [&>svg]:ml-0"
+								>
+									Features
+								</Accordion.Trigger>
+								<Accordion.Content class="pt-0 pb-2">
+									<ul class="mt-1 space-y-1 px-2">
+										<li>
+											<a
+												href="/features/organizing"
+												class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Organizing</a
+											>
+										</li>
+										<li>
+											<a
+												href="/features/whatsapp"
+												class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>WhatsApp</a
+											>
+										</li>
+										<li>
+											<a
+												href="/features/events"
+												class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Events</a
+											>
+										</li>
+										<li>
+											<a
+												href="/features/actions"
+												class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Actions</a
+											>
+										</li>
+										<li>
+											<a
+												href="/features/integrations"
+												class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Integrations</a
+											>
+										</li>
+									</ul>
+								</Accordion.Content>
+							</Accordion.Item>
+						</Accordion.Root>
 					</li>
 					<li>
 						<a
@@ -126,60 +115,49 @@
 						>
 					</li>
 					<li>
-						<button
-							type="button"
-							command="--toggle"
-							commandfor="sub-menu-2"
-							class="flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm/6 font-semibold text-gray-700 hover:bg-gray-50"
-						>
-							<svg
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								data-slot="icon"
-								aria-hidden="true"
-								class="size-5 shrink-0 not-in-aria-expanded:text-gray-400 in-aria-expanded:rotate-90 in-aria-expanded:text-gray-500"
-							>
-								<path
-									d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-									clip-rule="evenodd"
-									fill-rule="evenodd"
-								/>
-							</svg>
-							Resources
-						</button>
-						<el-disclosure id="sub-menu-2" hidden class="contents">
-							<ul class="mt-1 px-2">
-								<li class="">
-									<a
-										href="https://support.belcoda.com/docs"
-										target="_blank"
-										class="flex items-center gap-x-2 rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Guides & documentation <ExternalLinkIcon class="size-4" /></a
-									>
-								</li>
-								<li>
-									<a
-										href="/blog"
-										class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Blog</a
-									>
-								</li>
-								<li>
-									<a
-										href="/security"
-										class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Security</a
-									>
-								</li>
-								<li>
-									<a
-										href="https://belcoda.readme.io"
-										class="flex items-center gap-x-2 rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
-										>Developers <ExternalLinkIcon class="size-4" /></a
-									>
-								</li>
-							</ul>
-						</el-disclosure>
+						<Accordion.Root type="single" class="border-none pl-8">
+							<Accordion.Item value="resources" class="border-none">
+								<Accordion.Trigger
+									class="flex w-full items-center gap-x-3 rounded-md p-2 py-2 text-left text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:no-underline [&>svg]:ml-0"
+								>
+									Resources
+								</Accordion.Trigger>
+								<Accordion.Content class="pt-0 pb-2">
+									<ul class="mt-1 space-y-1 px-2">
+										<li>
+											<a
+												href="https://support.belcoda.com/docs"
+												target="_blank"
+												class="flex items-center gap-x-2 rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Guides & documentation <ExternalLinkIcon class="size-4" /></a
+											>
+										</li>
+										<li>
+											<a
+												href="/blog"
+												class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Blog</a
+											>
+										</li>
+										<li>
+											<a
+												href="/security"
+												class="block rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Security</a
+											>
+										</li>
+										<li>
+											<a
+												href="https://belcoda.readme.io"
+												target="_blank"
+												class="flex items-center gap-x-2 rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
+												>Developers <ExternalLinkIcon class="size-4" /></a
+											>
+										</li>
+									</ul>
+								</Accordion.Content>
+							</Accordion.Item>
+						</Accordion.Root>
 					</li>
 
 					<li>
