@@ -84,7 +84,7 @@
 							{/if}
 							{#if tier.name === 'Supported'}
 								<a
-									href="https://belcoda.org"
+									href="https://cal.com/django-merope-8wwjmi/belcoda-supported-tier-exploration-call"
 									target="_blank"
 									aria-describedby="tier-{tier.name.toLowerCase()}"
 									class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
@@ -101,29 +101,6 @@
 							{/if}
 						</div>
 					{/each}
-					<div
-						class="flex flex-col items-start gap-x-8 gap-y-6 rounded-3xl bg-white/80 p-8 sm:gap-y-10 sm:p-10 lg:col-span-3 lg:flex-row lg:items-center"
-					>
-						<div class="lg:min-w-0 lg:flex-1">
-							<h3 class="font-serif text-xl font-extrabold text-gray-900">
-								The Belcoda Foundation
-							</h3>
-							<p class="mt-1 text-base/7 text-gray-600">
-								Need additional features but don't have the budget? Apply for the Supported tier
-								through the Belcoda Foundation, which partners with philanthropic foundations to
-								provide software grants and support to eligible locally-led grassroots initiatives
-								in the Global South.
-							</p>
-							<div class="mt-6">
-								<a
-									href="https://belcoda.org"
-									target="_blank"
-									class="rounded-md bg-blue-900 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-800 hover:inset-ring-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800"
-									>Learn more <span aria-hidden="true">&rarr;</span></a
-								>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

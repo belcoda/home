@@ -159,8 +159,14 @@
 
 	const tierInfo = [
 		{ name: tiers[0].name, description: 'Everything you need to get started.' },
-		{ name: tiers[1].name, description: 'Additional features, foundation-funded for eligible organizations.' },
-		{ name: tiers[2].name, description: 'Enterprise features for networks and large organizations.' }
+		{
+			name: tiers[1].name,
+			description: 'Additional features, foundation-funded for eligible organizations.'
+		},
+		{
+			name: tiers[2].name,
+			description: 'Enterprise features for networks and large organizations.'
+		}
 	];
 
 	function getFeatureValue(
@@ -423,7 +429,7 @@
 								<p
 									class="text-4xl font-semibold tracking-tight text-white group-data-featured/tier:text-gray-900"
 								>
-									Foundation-funded
+									Partnership
 								</p>
 							</div>
 							<a

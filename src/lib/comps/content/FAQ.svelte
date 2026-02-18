@@ -12,12 +12,12 @@
 		},
 		{
 			title: `Can I change plans later?`,
-			answer: `Yes. You can apply for Supported tier access at any time through the Belcoda Foundation. Partnership tier is available by contacting us.`,
+			answer: `Yes. You can apply for Supported or Network tiers at any time by contacting us.`,
 			open: false
 		},
 		{
 			title: `Can I create multiple Belcoda organizations?`,
-			answer: `Yes! And you can be logged into multiple organizations at once, and switch between them, too. If you want to set up a network of multiple organizations, get in touch to talk about our Partnership tier.`,
+			answer: `Yes! And you can be logged into multiple organizations at once, and switch between them, too. If you want to set up a network of multiple organizations, get in touch to talk about our Network tier.`,
 			open: false
 		},
 		{

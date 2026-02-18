@@ -24,7 +24,7 @@ export const tiers = [
 	},
 	{
 		name: 'Supported',
-		description: 'Additional features for organizations that need them—foundations fund the cost.',
+		description: 'Additional features for qualifying organizations.',
 		features: [
 			{
 				name: '25 admin accounts'
@@ -46,7 +46,7 @@ export const tiers = [
 	{
 		name: 'Network',
 		price: 0,
-		description: 'For large networks and enterprise organizations.',
+		description: 'For large networks and international NGOs.',
 		features: [
 			{
 				name: 'SSO & role based access control'
