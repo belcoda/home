@@ -84,7 +84,7 @@
 							{/if}
 							{#if tier.name === 'Supported'}
 								<a
-									href="https://cal.com/django-merope-8wwjmi/belcoda-supported-tier-exploration-call"
+									href="https://cal.com/belcoda/belcoda-supported-tier-exploration-call"
 									target="_blank"
 									aria-describedby="tier-{tier.name.toLowerCase()}"
 									class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
@@ -93,7 +93,7 @@
 							{/if}
 							{#if tier.name === 'Network'}
 								<a
-									href="https://cal.com/django-merope-8wwjmi/belcoda-network-exploration-call"
+									href="https://cal.com/belcoda/belcoda-network-exploration-call"
 									aria-describedby="tier-{tier.name.toLowerCase()}"
 									class="mt-8 block rounded-md bg-blue-900 px-3.5 py-2 text-center text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
 									>Schedule a call</a

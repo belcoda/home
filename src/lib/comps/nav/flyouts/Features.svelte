@@ -6,7 +6,7 @@
 	import CalendarDaysIcon from '@lucide/svelte/icons/calendar-days';
 	import MessageCircleIcon from '@lucide/svelte/icons/message-circle';
 	const youtubeLink = 'https://www.youtube.com/watch?v=PIe6kR3CL6c';
-	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
+	const bookACallUrl = 'https://cal.com/belcoda/belcoda-information-call';
 </script>
 
 <Popover.Root bind:open>

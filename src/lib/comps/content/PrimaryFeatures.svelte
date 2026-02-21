@@ -30,7 +30,7 @@
 		Events: EventsImg
 	};
 
-	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
+	const bookACallUrl = 'https://cal.com/belcoda/belcoda-information-call';
 
 	const features = [
 		{

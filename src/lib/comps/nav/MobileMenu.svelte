@@ -196,7 +196,7 @@
 				3 minute demo
 			</a>
 			<a
-				href="https://cal.com/django-merope-8wwjmi/30min"
+				href="https://cal.com/belcoda/30min"
 				target="_blank"
 				class="flex w-1/2 items-center justify-center gap-x-2 px-6 py-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
 			>

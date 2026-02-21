@@ -1,6 +1,6 @@
 <script lang="ts">
 	const backgroundImage = '/background-auth.jpg';
-	const bookACallUrl = 'https://cal.com/django-merope-8wwjmi/belcoda-information-call';
+	const bookACallUrl = 'https://cal.com/belcoda/belcoda-information-call';
 	import laptopMockup from './assets/browser-mockup-community.webp';
 </script>
 
