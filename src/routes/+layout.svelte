@@ -30,6 +30,17 @@
 	<meta name="type" content="website" />
 	<meta name="published_time" content="2025-11-22" />
 	<meta name="modified_time" content="2025-11-22" />
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17963790839"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'AW-17963790839');
+	</script>
 </svelte:head>
 
 <main class="min-h-screen bg-gray-50">
