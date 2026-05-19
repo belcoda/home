@@ -82,10 +82,14 @@
 						</svg>
 					</div>
 					<div>
-						<a href="https://belcoda.readme.io" target="_blank" class="font-semibold text-gray-900">
+						<a
+							href="https://app.belcoda.com/api/docs/v1"
+							target="_blank"
+							class="font-semibold text-gray-900"
+						>
 							Developers <span
-								class="ml-2 rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800"
-								>Coming soon!</span
+								class="ml-2 rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800"
+								>New!</span
 							>
 							<span class="absolute inset-0"></span>
 						</a>

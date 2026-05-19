@@ -21,8 +21,8 @@
 	import EventsImg from '$lib/comps/content/assets/browser-mockup-event.webp';
 
 	//what's new
-	const whatsNewLink = 'https://support.belcoda.com/changelog/d52c8af8-c47e-4fea-96dd-de056035de6a';
-	const whatsNewTitle = '✨ Customize event pages';
+	const whatsNewLink = 'https://app.belcoda.com/api/docs/v1';
+	const whatsNewTitle = '🔌 API & Webhooks documentation';
 
 	const images = {
 		Community: CommunityImg,

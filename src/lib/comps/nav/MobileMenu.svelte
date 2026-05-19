@@ -148,7 +148,7 @@
 										</li>
 										<li>
 											<a
-												href="https://belcoda.readme.io"
+												href="https://app.belcoda.com/api/docs/v1"
 												target="_blank"
 												class="flex items-center gap-x-2 rounded-md py-2 pr-2 pl-9 text-sm/6 text-gray-700 hover:bg-gray-50"
 												>Developers <ExternalLinkIcon class="size-4" /></a

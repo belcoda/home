@@ -40,7 +40,7 @@
 							</li>
 							<li>
 								<a
-									href="https://belcoda.readme.io"
+									href="https://app.belcoda.com/api/docs/v1"
 									target="_blank"
 									class="text-sm/6 text-gray-400 hover:text-white">Developers</a
 								>
